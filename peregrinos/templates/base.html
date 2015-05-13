@@ -1,4 +1,4 @@
-{%   load   staticfiles   %}  
+{%   load   staticfiles   %}
 <!html>
 <html>
 <head>
@@ -6,8 +6,31 @@
 {%block elcss %}{% endblock %}
 </head>
 <body>
-	
+<!-- parte de cabecera -->
+<div id="banner_plus">
+	<div id="banner">
+		<h1>LOS PEREGRINOS</h1>
+	</div>
+</div>
+<!-- parte de barra menu -->
+<div id="nav_plus">
+	<div id="nav">
+			<ul>
+				<li><a href="#">INICIO</a></li>
+				<li><a href="#">PACIENTES</a></li>
+				<li><a href="#">HISTORIALES</a></li>
+				<li><a href="#">CITAS</a></li>
+			</ul>
+	</div>
+</div>
+<!-- cuerpo y block content -->
+<div id="cuerpo">
 	{% block content %} {% endblock %}
-	
+</div>
+<!-- footer -->
+<div id="footer_plus">
+	<div id="footer">
+	</div>
+</div>
 </body>
-</html>	
+</html>

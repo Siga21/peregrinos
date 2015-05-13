@@ -1,6 +1,22 @@
-.prueba
+#index_cuerpo
 {
-	color: #FB5000;
-	font-size: 25px;
-	font-weight: bold;
-}	
+	width: 950px;
+	height: 600px;
+}
+#index_esquerda
+{
+	float:left;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 248px;
+	height: 560px;
+	border-right: 2px solid #075E55;
+}
+#index_dereita
+{
+	float:left;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 700px;
+	height: 560px;
+}

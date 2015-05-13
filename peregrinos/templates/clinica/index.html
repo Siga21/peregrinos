@@ -1,12 +1,18 @@
 {% extends "base.html" %}
-{%   load   staticfiles   %}  
+{%   load   staticfiles   %}
 
 {% block elcss %}
 <link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/index.css'   %}"   />
 {% endblock %}
 
 {% block content %}
-	<spam class="prueba">hola mundo</spam>
+<div id="index_cuerpo">
+		<div id="index_esquerda">
+		</div>
+		<div id="index_dereita">
+		</div>
+</div>
+
 <!--
 {% if los_articulos %}
 	{% for Articulo in los_articulos %}
@@ -16,14 +22,14 @@
 			</div>
 			<div id="box_detalle">
 				<p class="texto_importante">{{ Articulo.nombre }}</p>
-				<p class="texto_normal">Familia : {{ Articulo.familia }}</p>			
+				<p class="texto_normal">Familia : {{ Articulo.familia }}</p>
 				<p class="texto_normal">Fecha : {{ Articulo.antiguedad }}</p>
-				<p class="texto_importante">P.V.P. : {{ Articulo.importe }} €</p>			
-			</div>	
+				<p class="texto_importante">P.V.P. : {{ Articulo.importe }} €</p>
+			</div>
 		</div>
 	{% endfor %}
 {% else %}
 	<p>no hay Articulos</p>
-{% endif %}		
+{% endif %}
 -->
 {% endblock %}
