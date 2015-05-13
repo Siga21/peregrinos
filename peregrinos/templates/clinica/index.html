@@ -10,26 +10,19 @@
 		<div id="index_esquerda">
 		</div>
 		<div id="index_dereita">
+		{% if las_citas %}
+			{% for citas in las_citas %}
+			
+				<spam>Fecha : {{ citas.fecha }}</spam>
+				<br />
+				<spam>Paciente : {{ citas.cliente }}</spam>
+				<br />
+				<spam>Notas : {{ citas.observaciones }}</spam>
+				<hr />
+			{% endfor %}
+		{% else %}
+			<p>SIN  CITAS</p>
+		{% endif %}
 		</div>
 </div>
-
-<!--
-{% if los_articulos %}
-	{% for Articulo in los_articulos %}
-		<div id="box_articulo">
-			<div id="box_imagen">
-				<img src="{{ Articulo.fotografia.url }}" width='150' height='150' >
-			</div>
-			<div id="box_detalle">
-				<p class="texto_importante">{{ Articulo.nombre }}</p>
-				<p class="texto_normal">Familia : {{ Articulo.familia }}</p>
-				<p class="texto_normal">Fecha : {{ Articulo.antiguedad }}</p>
-				<p class="texto_importante">P.V.P. : {{ Articulo.importe }} €</p>
-			</div>
-		</div>
-	{% endfor %}
-{% else %}
-	<p>no hay Articulos</p>
-{% endif %}
--->
 {% endblock %}
