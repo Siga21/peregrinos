@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes.css'   %}"   />
+{% endblock %}
+
+{% block content %}
+<div id="pacientes_cuerpo">
+		<div id="pacientes_esquerda">
+		<a href="/paciente_nuevo"><button>Nuevo</button></a>
+		</div>
+		<div id="pacientes_dereita">
+		{% if los_pacientes %}
+			{% for pacientes in los_pacientes %}
+			
+				<a href="/pacientes_detalle/{{pacientes.id}}/"><spam>{{ pacientes.nombre }}</spam></a>
+				--
+				<spam> {{ pacientes.apellidos }}</spam>
+				--
+				<spam>{{ pacientes.telefono }}</spam>
+				<hr />
+			{% endfor %}
+		{% else %}
+			<p>SIN  PACIENTES</p>
+		{% endif %}
+		</div>
+</div>
+{% endblock %}

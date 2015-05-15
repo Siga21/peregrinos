@@ -9,7 +9,7 @@ class clientes(models.Model):
     telefono =  models.PositiveIntegerField(null=True, blank=True)
     telefono2 = models.PositiveIntegerField(null=True, blank=True)
     antiguedad = models.DateTimeField(default=datetime.now, blank=True)
-    fotografia = models.ImageField(upload_to='imagenes')
+    fotografia = models.ImageField(upload_to='imagenes', blank=True)
 
     def __unicode__(self):
     	return self.nombre
