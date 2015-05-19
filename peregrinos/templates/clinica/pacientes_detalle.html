@@ -12,8 +12,13 @@
 		<div id="pacientes_dereita">
 			<spam>{{ cliente_detalle.nombre }}</spam>
 			<hr />
+			{% if cliente_detalle.fotografia %}
 			<img src="{{ cliente_detalle.fotografia.url }}" width="200" height="200" >
 			<br />
+			{% else %}
+			<img src="/media/imagenes/user.jpg">
+			<br />			
+			{% endif %}
 			<a href="/pacientes_borrar/{{cliente_detalle.id}}/">borrar</a>
 		</div>
 </div>
