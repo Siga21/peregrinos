@@ -19,4 +19,45 @@
 	margin-bottom: 20px;
 	width: 700px;
 	height: 560px;
+	overflow: auto;
+}
+#box_cita
+{
+	float:left;
+	margin-top: 5px;
+	margin-left: 5px;
+	padding-top: 3px;
+	width: 652px;
+	height: 52px;
+	border: 1px solid #e3e3e3;
+	border-radius: 8px 8px 8px 8px;
+	box-shadow: 4px 4px #e0e0e0;
+}
+#reloj_cita
+{
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 40px;
+	width: 40px;
+}
+#hora_cita
+{
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 40px;
+	width: 100px;
+	font-size: 35px;
+	color: #075E55;
+}
+.paciente
+{
+	color: #075E55;
+	font-size: 16px;
+	font-weight: bold;
 }

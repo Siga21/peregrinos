@@ -12,13 +12,17 @@
 		<div id="index_dereita">
 		{% if las_citas %}
 			{% for citas in las_citas %}
-			
-				<spam>Fecha : {{ citas.fecha }}</spam>
-				<br />
-				<spam>Paciente : {{ citas.cliente }}</spam>
-				<br />
-				<spam>Notas : {{ citas.observaciones }}</spam>
-				<hr />
+				<div id="box_cita">
+					<div id="reloj_cita">
+						<img src="/media/imagenes/clock.png">
+					</div>
+					<div id="hora_cita">
+						<spam>{{ citas.fecha | date:"H:i"}}</spam>
+					</div>
+					<spam class="paciente">{{ citas.cliente | capfirst }},{{ citas.cliente.apellidos | capfirst}} -- ( {{citas.cliente.telefono}} ) -- ( {{citas.cliente.telefono2}} ) </spam>
+					<br />
+					<spam>Notas : {{ citas.observaciones }}</spam>
+				</div>
 			{% endfor %}
 		{% else %}
 			<p>SIN  CITAS</p>
