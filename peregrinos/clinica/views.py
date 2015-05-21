@@ -44,10 +44,11 @@ def paciente_nuevo(request):
 def clientesDelete(request, clientes_id):
     cliente_detalle = get_object_or_404(clientes, pk=clientes_id)
     cliente_detalle.delete()	
-    mytime = datetime.strptime('2359','%H%M').time()
-    final_dia = datetime.combine(datetime.today(), mytime)
-    las_citas = citas.objects.filter(fecha__gte = datetime.now(), fecha__lte = final_dia).order_by('fecha')
-    context = {'las_citas': las_citas }
-    return render(request, 'clinica/index.html', context)
+    #mytime = datetime.strptime('2359','%H%M').time()
+    #final_dia = datetime.combine(datetime.today(), mytime)
+    #las_citas = citas.objects.filter(fecha__gte = datetime.now(), fecha__lte = final_dia).order_by('fecha')
+    #context = {'las_citas': las_citas }
+    #return render(request, 'clinica/index.html', context)
+    return HttpResponseRedirect('/index')
    
 
