@@ -5,6 +5,7 @@ from django.template import RequestContext
 from datetime import datetime, timedelta
 from django.utils import timezone
 from clinica.forms import clienteForm
+from django.views.generic import ListView 
 
 from clinica.models import clientes, historial, citas
 
@@ -19,10 +20,12 @@ def index(request):
 
 #--------------------------------------------------------------------	
 
-def pacientes(request):
-	los_pacientes = clientes.objects.all()
-	context = {'los_pacientes': los_pacientes }
-	return render(request, 'clinica/pacientes.html', context)
+#def pacientes(request):
+#	los_pacientes = clientes.objects.all()
+#	context = {'los_pacientes': los_pacientes }
+#	return render(request, 'clinica/pacientes.html', context)
+class ListaPacientes(ListView): 
+    model = clientes
 
 #--------------------------------------------------------------------	
 def pacientes_detalle(request, clientes_id):
