@@ -21,3 +21,42 @@
 	height: 560px;
 	overflow: auto;
 }
+#box_paciente
+{
+	float:left;
+	margin-top: 5px;
+	margin-left: 5px;
+	padding-top: 3px;
+	width: 652px;
+	height: 52px;
+	border: 1px solid #e3e3e3;
+	border-radius: 8px 8px 8px 8px;
+	box-shadow: 4px 4px #e0e0e0;
+}
+#avatar_paciente
+{
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 40px;
+	width: 40px;
+}
+#nombre_paciente
+{
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	height: 20px;
+	width: 300px;
+	font-size: 18px;
+	color: #075E55;
+}
+#nombre_paciente a
+{
+	text-decoration : none;
+	color: #075E55;
+}	

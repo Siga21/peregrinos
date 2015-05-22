@@ -20,12 +20,12 @@ def index(request):
 
 #--------------------------------------------------------------------	
 
-#def pacientes(request):
-#	los_pacientes = clientes.objects.all()
-#	context = {'los_pacientes': los_pacientes }
-#	return render(request, 'clinica/pacientes.html', context)
-class ListaPacientes(ListView): 
-    model = clientes
+def pacientes(request):
+	los_pacientes = clientes.objects.all()
+	context = {'los_pacientes': los_pacientes }
+	return render(request, 'clinica/pacientes.html', context)
+#class ListaPacientes(ListView): 
+#    model = clientes
 
 #--------------------------------------------------------------------	
 def pacientes_detalle(request, clientes_id):
