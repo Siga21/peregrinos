@@ -5,7 +5,7 @@ from django.template import RequestContext
 from datetime import datetime, timedelta
 from django.utils import timezone
 from clinica.forms import clienteForm
-from django.views.generic import ListView 
+from django.views.generic import ListView, DetailView 
 
 from clinica.models import clientes, historial, citas
 
@@ -20,18 +20,20 @@ def index(request):
 
 #--------------------------------------------------------------------	
 
-def pacientes(request):
-	los_pacientes = clientes.objects.all()
-	context = {'los_pacientes': los_pacientes }
-	return render(request, 'clinica/pacientes.html', context)
-#class ListaPacientes(ListView): 
-#    model = clientes
-
+#def pacientes(request):
+#	los_pacientes = clientes.objects.all()
+#	context = {'los_pacientes': los_pacientes }
+#	return render(request, 'clinica/pacientes.html', context)
+class ListaPacientes(ListView): 
+    model = clientes
+#    context_object_name = 'clientes'
+#    queryset = clientes.objects.filter(nombre='Javier')	
 #--------------------------------------------------------------------	
-def pacientes_detalle(request, clientes_id):
-	cliente_detalle = get_object_or_404(clientes, pk=clientes_id)
-	return render(request, 'clinica/pacientes_detalle.html', {'cliente_detalle': cliente_detalle})
-
+#def pacientes_detalle(request, clientes_id):
+#	cliente_detalle = get_object_or_404(clientes, pk=clientes_id)
+#	return render(request, 'clinica/pacientes_detalle.html', {'cliente_detalle': cliente_detalle})
+class DetallePacientes(DetailView): 
+    model = clientes
 #--------------------------------------------------------------------	
 def paciente_nuevo(request):
     if request.method=='POST':

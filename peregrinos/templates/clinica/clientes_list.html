@@ -14,7 +14,7 @@
     {% if object_list %} 
         <ul> 
         {% for pacientes  in object_list %} 
-            <li><a href="{% url 'pacientes_detalle' pacientes.id %}"> 
+            <li><a href="{% url 'pacientes_detalle' pacientes.pk %}"> 
                  {{ pacientes.nombre | capfirst }}</a></li> 
 		 <spam> {{ pacientes.apellidos | capfirst }}</spam>
 		 --

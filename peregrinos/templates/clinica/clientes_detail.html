@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes.css'   %}"   />
+{% endblock %}
+
+{% block content %}
+<div id="pacientes_cuerpo">
+		<div id="pacientes_esquerda">
+		</div>
+		<div id="pacientes_dereita">
+			<spam>{{ clientes.nombre }}</spam>
+			<hr />
+			{% if clientes.fotografia %}
+			<img src="{{ clientes.fotografia.url }}" width="200" height="200" >
+			<br />
+			{% else %}
+			<img src="/media/imagenes/user.jpg">
+			<br />			
+			{% endif %}
+			<a href="/pacientes_borrar/{{clientes.id}}/">borrar</a>
+		</div>
+</div>
+{% endblock %}
