@@ -1,0 +1,45 @@
+#pdetalle_cuerpo
+{
+	width: 950px;
+	height: 600px;
+}
+#pdetalle_esquerda
+{
+	float:left;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 248px;
+	height: 560px;
+	border-right: 2px solid #075E55;
+}
+#pdetalle_dereita
+{
+	float:left;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	width: 680px;
+	height: 560px;
+	overflow: auto;
+}
+
+#pdetalle_imagen
+{
+	float: left;
+	height: 160px;
+	width: 160px;
+	padding-top: 10px;
+	padding-left: 10px;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px 8px 8px 8px;
+	box-shadow: 4px 4px #e0e0e0;
+}	
+#pdetalle_nombre
+{
+	float:left;
+	height: 175px;
+	width: 450px;
+	color: #075E55;
+	margin-left: 25px;
+}
+

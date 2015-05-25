@@ -2,24 +2,29 @@
 {%   load   staticfiles   %}
 
 {% block elcss %}
-<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes.css'   %}"   />
+<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes_detalle.css'   %}"   />
 {% endblock %}
 
 {% block content %}
-<div id="pacientes_cuerpo">
-		<div id="pacientes_esquerda">
-		</div>
-		<div id="pacientes_dereita">
-			<spam>{{ clientes.nombre }}</spam>
-			<hr />
+<div id="pdetalle_cuerpo">
+	<div id="pdetalle_esquerda">
+		<a href="/pacientes_borrar/{{clientes.id}}/"><button class="acceso_rapido">borrar</button></a>
+	</div>
+	<div id="pdetalle_dereita">
+		<div id="pdetalle_imagen">
 			{% if clientes.fotografia %}
-			<img src="{{ clientes.fotografia.url }}" width="200" height="200" >
-			<br />
+				<img src="{{ clientes.fotografia.url }}" width="150" height="150" >
+				<br />
 			{% else %}
-			<img src="/media/imagenes/user.jpg">
-			<br />			
+				<img src="/media/imagenes/user.jpg">
+				<br />			
 			{% endif %}
-			<a href="/pacientes_borrar/{{clientes.id}}/">borrar</a>
+		</div>	
+		<div id="pdetalle_nombre">
+			<spam>Paciente : {{ clientes.nombre | capfirst}},{{ clientes.apellidos | capfirst}}</spam>
+			<br />
+			<spam class="paciente">Teléfono : {{clientes.telefono}} /  {{ clientes.telefono2 }}</spam>
 		</div>
+	</div>
 </div>
 {% endblock %}
