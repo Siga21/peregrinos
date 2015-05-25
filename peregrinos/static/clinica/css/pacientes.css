@@ -25,9 +25,9 @@
 {
 	float:left;
 	margin-top: 5px;
-	margin-left: 5px;
+	margin-left: 3px;
 	padding-top: 3px;
-	width: 652px;
+	width: 632px;
 	height: 52px;
 	border: 1px solid #e3e3e3;
 	border-radius: 8px 8px 8px 8px;
@@ -36,7 +36,7 @@
 #avatar_paciente
 {
 	float: left;
-	margin-left: 10px;
+	margin-left: 5px;
 	margin-right: 10px;
 	margin-top: 5px;
 	margin-bottom: 5px;
