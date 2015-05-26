@@ -13,41 +13,44 @@
 			<a href="#"><button class="acceso_rapido">Buscar Cliente</button></a>
 		</div>
 		<div id="pacientes_dereita">
-    {% if object_list %} 
-        <ul> 
-        {% for pacientes  in object_list %} 
-   			<div id="box_paciente">	
+    {% if object_list %}
+
+        {% for pacientes  in object_list %}
+   			<div id="box_paciente">
 					<div id="avatar_paciente">
 						{% if pacientes.fotografia %}
 							<img src="{{ pacientes.fotografia.url }}" width="40" height="40" >
 						{% else %}
 							<img src="/media/imagenes/user.jpg" width="40" height="40">
-						{% endif %}	
-					</div>	
+						{% endif %}
+					</div>
 					<div id="nombre_paciente">
 						<a href="/pacientes_detalle/{{pacientes.id}}/"><spam>{{ pacientes.apellidos | capfirst }} , {{ pacientes.nombre | capfirst }}</spam></a>
-					</div>	
+					</div>
 	 				<spam>{{ pacientes.telefono }}</spam>
 					<hr />
-				</div>	
-        {% endfor %} 
-        </ul> 
-        {% else %} 
-            <p>No hay clientes registrados.</p> 
-    {% endif %} 
-   </div>
+				</div>
+        {% endfor %}
+        {% else %}
+            <p>No hay clientes registrados.</p>
+    {% endif %}
+		<br /><br /><br />
+		</div>
+		<div id="paciente_paginado">
+			<div class="pagination">
+				<span class="steplinks">
+					{% if page_obj.has_previous %}
+					<a href="?page={{ page_obj.previous_page_number }}"><button>Anterior</button></a>
+					{% endif %}
+					<span class="current">
+						Pagina {{ page_obj.number }} de {{ paginator.num_pages }}.
+					</span>
+					{% if page_obj.has_next %}
+					<a href="?page={{ page_obj.next_page_number }}"><button>Siguiente</button></a>
+					{% endif %}
+				</span>
+			</div>
+		</div>
 </div>
-<div class="pagination">
-<span class="steplinks">
-{% if page_obj.has_previous %}
-<a href="?page={{ page_obj.previous_page_number }}"><button>Anterior</button></a>
-{% endif %}
-<span class="current">
-Pagina {{ page_obj.number }} de {{ paginator.num_pages }}.
-</span>
-{% if page_obj.has_next %}
-<a href="?page={{ page_obj.next_page_number }}"><button>Siguiente</button></a>
-{% endif %}
-</span>
-</div>
+
 {% endblock %}
