@@ -25,7 +25,7 @@
 						{% endif %}	
 					</div>	
 					<div id="nombre_paciente">
-						<a href="/pacientes_detalle/{{pacientes.id}}/"><spam>{{ pacientes.nombre | capfirst }},{{ pacientes.apellidos | capfirst }}</spam></a>
+						<a href="/pacientes_detalle/{{pacientes.id}}/"><spam>{{ pacientes.apellidos | capfirst }} , {{ pacientes.nombre | capfirst }}</spam></a>
 					</div>	
 	 				<spam>{{ pacientes.telefono }}</spam>
 					<hr />
@@ -36,5 +36,18 @@
             <p>No hay clientes registrados.</p> 
     {% endif %} 
    </div>
+</div>
+<div class="pagination">
+<span class="steplinks">
+{% if page_obj.has_previous %}
+<a href="?page={{ page_obj.previous_page_number }}"><button>Anterior</button></a>
+{% endif %}
+<span class="current">
+Pagina {{ page_obj.number }} de {{ paginator.num_pages }}.
+</span>
+{% if page_obj.has_next %}
+<a href="?page={{ page_obj.next_page_number }}"><button>Siguiente</button></a>
+{% endif %}
+</span>
 </div>
 {% endblock %}

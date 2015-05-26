@@ -8,7 +8,7 @@
 {% block content %}
 <div id="pdetalle_cuerpo">
 	<div id="pdetalle_esquerda">
-		<a href="/pacientes_borrar/{{clientes.id}}/"><button class="acceso_rapido">borrar</button></a>
+		<a href="/pacientes_borrar/{{clientes.id}}/"><button class="acceso_rapido">Borrar</button></a>
 	</div>
 	<div id="pdetalle_dereita">
 		<div id="pdetalle_imagen">
@@ -21,7 +21,7 @@
 			{% endif %}
 		</div>	
 		<div id="pdetalle_nombre">
-			<spam>Paciente : {{ clientes.nombre | capfirst}},{{ clientes.apellidos | capfirst}}</spam>
+			<spam>Paciente : {{ clientes.nombre | capfirst}} {{ clientes.apellidos | capfirst}}</spam>
 			<br />
 			<spam class="paciente">Teléfono : {{clientes.telefono}} /  {{ clientes.telefono2 }}</spam>
 		</div>

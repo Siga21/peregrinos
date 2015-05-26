@@ -10,7 +10,7 @@
 		<div id="index_esquerda">
 			<a href="#"><button class="acceso_rapido">Nueva Cita</button></a>
 			<br /><br />
-			<a href="#"><button class="acceso_rapido">Nuevo cliente</button></a>
+			<a href="/paciente_nuevo"><button class="acceso_rapido">Nuevo cliente</button></a>
 			<br /><br />
 			<a href="#"><button class="acceso_rapido">Historial</button></a>
 		</div>
@@ -24,7 +24,7 @@
 					<div id="hora_cita">
 						<spam>{{ citas.fecha | date:"H:i"}}</spam>
 					</div>
-					<spam class="paciente">{{ citas.cliente | capfirst }},{{ citas.cliente.apellidos | capfirst}} -- ( {{citas.cliente.telefono}} ) -- ( {{citas.cliente.telefono2}} ) </spam>
+					<spam class="paciente">{{ citas.cliente | capfirst }} {{ citas.cliente.apellidos | capfirst}} -- ( {{citas.cliente.telefono}} ) -- ( {{citas.cliente.telefono2}} ) </spam>
 					<br />
 					<spam>Notas : {{ citas.observaciones }}</spam>
 				</div>

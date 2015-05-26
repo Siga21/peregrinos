@@ -26,6 +26,7 @@ def index(request):
 #	return render(request, 'clinica/pacientes.html', context)
 class ListaPacientes(ListView): 
     model = clientes
+    paginate_by = 8
 #    context_object_name = 'clientes'
 #    queryset = clientes.objects.filter(nombre='Javier')	
 #--------------------------------------------------------------------	
