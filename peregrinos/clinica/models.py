@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
@@ -13,6 +14,9 @@ class clientes(models.Model):
 
     def __unicode__(self):
     	return self.nombre
+
+    def get_absolute_url(self): 
+        return reverse('pacientes_detalle', kwargs={'pk': self.pk}) 
 
 
 class historial(models.Model):
