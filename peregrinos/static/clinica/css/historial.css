@@ -1,0 +1,63 @@
+#historial_cuerpo
+{
+	width: 950px;
+	height: 600px;
+}
+#historial_centro
+{
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 420px;
+	height: 500px;
+}
+
+#box_cliente
+{
+	float:left;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 3px;
+	width: 400px;
+	height: 52px;
+	border: 1px solid #e3e3e3;
+	border-radius: 8px 8px 8px 8px;
+	box-shadow: 4px 4px #e0e0e0;
+}
+#avatar_cliente
+{
+	float: left;
+	margin-left: 5px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 40px;
+	width: 40px;
+}
+#nombre_cliente
+{
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	height: 20px;
+	width: 300px;
+	font-size: 18px;
+	color: #075E55;
+}
+#nombre_cliente a
+{
+	text-decoration : none;
+	color: #075E55;
+}
+#historial_paginado
+{
+	float:left;
+	margin-top: 10px;
+	margin-left: 20px;
+	width: 680px;
+	height: 30px;
+}

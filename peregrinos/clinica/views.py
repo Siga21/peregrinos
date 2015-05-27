@@ -24,6 +24,12 @@ def index(request):
 #	los_pacientes = clientes.objects.all()
 #	context = {'los_pacientes': los_pacientes }
 #	return render(request, 'clinica/pacientes.html', context)
+
+class ListaClientes(ListView):
+	model = clientes
+	paginate_by = 8
+	template_name = 'clinica/clientes_historial.html'
+
 class ListaPacientes(ListView):
     model = clientes
     paginate_by = 8
