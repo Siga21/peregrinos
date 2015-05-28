@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/citas.css'   %}"   />
+{% endblock %}
+{% block titulo %}
+Citas
+{% endblock %}
+{% block content %}
+<div id="citas_cuerpo">
+	<div id="citas_esquerda">	
+	<br />
+	{% if cliente.fotografia %}
+		<img src="{{ cliente.fotografia.url }}" width="150" height="150" >
+	{% else %}
+		<img src="/media/imagenes/user.jpg" width="150" height="150">
+	{% endif %}
+	<br />	
+	<h1>{{cliente.nombre | capfirst}} {{cliente.apellidos | capfirst}}</h1>
+        <h2>{{cliente.telefono}} --  {{cliente.telefono2}}</h2>
+	<br />
+	</div>
+	<div id="citas_dereita">
+    {% if object_list %}
+
+        {% for citas  in object_list %}
+
+		<spam > {{ citas.cliente }} </spam>
+		<br />
+		<spam > {{ citas.fecha | date:"H:i" }} </spam>
+                <br />
+		<spam > {{ citas.observaciones }} </spam>
+		<hr />			
+
+        {% endfor %}
+        {% else %}
+            <p>No hay citas.</p>
+    {% endif %}
+	</div>
+		
+</div>
+
+{% endblock %}

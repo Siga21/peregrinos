@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/historial.css'   %}"   />
+{% endblock %}
+{% block titulo %}
+Historial por paciente
+{% endblock %}
+{% block content %}
+<div id="historial_cuerpo">
+	<div id="historial_esquerda">	
+	<br />
+	{% if cliente.fotografia %}
+		<img src="{{ cliente.fotografia.url }}" width="150" height="150" >
+	{% else %}
+		<img src="/media/imagenes/user.jpg" width="150" height="150">
+	{% endif %}
+	<br />	
+	<h1>{{cliente.nombre | capfirst}} {{cliente.apellidos | capfirst}}</h1>
+        <h2>{{cliente.telefono}} --  {{cliente.telefono2}}</h2>
+	<br />
+	</div>
+	<div id="historial_dereita">
+    {% if object_list %}
+
+        {% for historial  in object_list %}
+
+		<spam > {{ historial.cliente }} </spam>
+		<br />
+		<spam > {{ historial.fecha | date:"H:i" }} </spam>
+                <br />
+		<spam > {{ historial.comentario }} </spam>
+		<hr />			
+
+        {% endfor %}
+        {% else %}
+            <p>No hay historiales.</p>
+    {% endif %}
+	</div>
+		
+</div>
+
+{% endblock %}

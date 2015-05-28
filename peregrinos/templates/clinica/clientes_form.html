@@ -5,14 +5,13 @@
 {% block elcss %}
 <link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes.css'   %}"   />
 {% endblock %}
-<head> 
-    <title>Agregar paciente</title> 
-</head> 
 
 <body> 
+{% block titulo %}
+Agregar cliente
+{% endblock %}
 {% block content %}
-    <h1>Agregar paciente</h1> 
- 
+    
     {% if form.errors %} 
         <p style="color: red;"> 
             Por favor corrige lo siguiente: 

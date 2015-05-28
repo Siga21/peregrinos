@@ -19,26 +19,44 @@ def index(request):
 	context = {'las_citas': las_citas }
 	return render(request, 'clinica/index.html', context)
 
-#-------------------- Listado Historial ------------------------------------------------
+#------------------------- Listado Pacientes -----------------------------------------------------
 
 #def pacientes(request):
 #	los_pacientes = clientes.objects.all()
 #	context = {'los_pacientes': los_pacientes }
 #	return render(request, 'clinica/pacientes.html', context)
 
-class ListaClientes(ListView):
-	model = clientes
-	paginate_by = 8
-	template_name = 'clinica/clientes_historial.html'
-
-#------------------------- Listado Pacientes -----------------------------------------------------
-
 class ListaPacientes(ListView):
-    model = clientes
+    #model = clientes
+    queryset = clientes.objects.order_by('apellidos')
+    context_object_name = 'clientes'
     paginate_by = 8
 #    context_object_name = 'clientes'
 #    queryset = clientes.objects.filter(nombre='Javier')
 
+#----------------------------------- Historial por cliente ---------------------------------
+
+class ListaHistorial(ListView):
+    
+    def get_queryset(self): 
+        self.cliente = get_object_or_404(clientes, id=self.args[0]) 
+        return historial.objects.filter(cliente=self.cliente).order_by('-fecha') 
+    def get_context_data(self,**kwargs):
+        context = super(ListaHistorial,self).get_context_data(**kwargs)
+        context['cliente']=self.cliente
+        return context
+
+#----------------------------------- Citas por cliente ---------------------------------
+
+class ListaCitas(ListView):
+    
+    def get_queryset(self): 
+        self.cliente = get_object_or_404(clientes, id=self.args[0]) 
+        return citas.objects.filter(cliente=self.cliente).order_by('-fecha') 
+    def get_context_data(self,**kwargs):
+        context = super(ListaCitas,self).get_context_data(**kwargs)
+        context['cliente']=self.cliente
+        return context
 #----------------------------------- Detalle Pacientes ---------------------------------
 #def pacientes_detalle(request, clientes_id):
 #	cliente_detalle = get_object_or_404(clientes, pk=clientes_id)

@@ -4,7 +4,9 @@
 {% block elcss %}
 <link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes.css'   %}"   />
 {% endblock %}
-
+{% block titulo %}
+Lista de pacientes
+{% endblock %}
 {% block content %}
 <div id="pacientes_cuerpo">
 		<div id="pacientes_esquerda">
@@ -27,7 +29,9 @@
 					<div id="nombre_paciente">
 						<a href="/pacientes_detalle/{{pacientes.id}}/"><spam>{{ pacientes.apellidos | capfirst }} , {{ pacientes.nombre | capfirst }}</spam></a>
 					</div>
-	 				<spam>{{ pacientes.telefono }}</spam>
+	 				<a href="/historial/{{pacientes.id}}/">Historial<a>
+					<hr />
+                                        <a href="/citas/{{pacientes.id}}/">Citas<a>
 					<hr />
 				</div>
         {% endfor %}

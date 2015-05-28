@@ -23,10 +23,7 @@ class historial(models.Model):
     cliente = models.ForeignKey(clientes, default=None, null=True, blank=True)
     fecha = models.DateTimeField(default=datetime.now, blank=True)
     comentario = models.TextField()
-    fotografia = models.ImageField(upload_to='imagenes')
-
-    def __unicode__(self):
-    	return self.cliente
+    fotografia = models.ImageField(upload_to='imagenes', blank=True)
 
 
 class citas(models.Model):
