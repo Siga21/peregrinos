@@ -11,6 +11,10 @@ Detalle del cliente
 <div id="pdetalle_cuerpo">
 	<div id="pdetalle_esquerda">
 		<a href="/pacientes_borrar/{{clientes.id}}/"><button class="acceso_rapido">Borrar</button></a>
+		<br /><br />
+		<a href="/citas/{{clientes.id}}/"><button class="acceso_rapido"><img src="/media/imagenes/clock.png"></button><a>
+		<br /><br />
+		<a href="/historial/{{clientes.id}}/"><button class="acceso_rapido"><img src="/media/imagenes/historial.png"></button><a>
 	</div>
 	<div id="pdetalle_dereita">
 		<div id="pdetalle_imagen">
@@ -19,13 +23,35 @@ Detalle del cliente
 				<br />
 			{% else %}
 				<img src="/media/imagenes/user.jpg">
-				<br />			
+				<br />
 			{% endif %}
-		</div>	
+		</div>
 		<div id="pdetalle_nombre">
-			<spam>Paciente : {{ clientes.nombre | capfirst}} {{ clientes.apellidos | capfirst}}</spam>
-			<br />
-			<spam class="paciente">Teléfono : {{clientes.telefono}} /  {{ clientes.telefono2 }}</spam>
+			<spam>{{ clientes.nombre | capfirst}} {{ clientes.apellidos | capfirst}}</spam>
+		</div>
+		<div id="pdetalle_paciente">
+			<table border ="0">
+				<tr>
+					<td width="150" class="etiquetas">Nombre :</td>
+					<td width="350" class="campos">{{ clientes.nombre | capfirst }}</td>
+				</tr>
+				<tr>
+					<td width="150" class="etiquetas">Apellidos :</td>
+					<td width="350" class="campos">{{ clientes.apellidos | capfirst }}</td>
+				</tr>
+				<tr>
+					<td width="150" class="etiquetas">Teléfono 1 :</td>
+					<td width="350" class="campos">{{ clientes.telefono }}</td>
+				</tr>
+				<tr>
+					<td width="150" class="etiquetas">Teléfono 2 :</td>
+					<td width="350" class="campos">{{ clientes.telefono2 }}</td>
+				</tr>
+				<tr>
+					<td width="150" class="etiquetas">Antigüedad :</td>
+					<td width="350" class="campos">{{ clientes.antiguedad | date:"SHORT_DATE_FORMAT" }}</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 </div>

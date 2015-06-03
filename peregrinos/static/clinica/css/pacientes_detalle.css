@@ -33,13 +33,37 @@
 	border: 1px solid #e0e0e0;
 	border-radius: 8px 8px 8px 8px;
 	box-shadow: 4px 4px #e0e0e0;
-}	
+}
 #pdetalle_nombre
 {
+	position:relative;
 	float:left;
-	height: 175px;
+	margin-top:148px;
+	height: 25px;
 	width: 450px;
 	color: #075E55;
+	font-size: 25px;
+	font-weight: bold;
 	margin-left: 25px;
 }
-
+#pdetalle_paciente
+{
+	position:relative;
+	float:left;
+	margin-top:20px;
+	height: 300px;
+	width: 600px;
+	margin-left: 10px;
+}
+.etiquetas
+{
+	color: #075E55;
+	font-size: 20px;
+	font-weight: bold;
+}
+.campos
+{
+	color: #616161;
+	font-size: 18px;
+	font-weight: bold;
+}

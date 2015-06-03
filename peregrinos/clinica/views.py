@@ -37,10 +37,10 @@ class ListaPacientes(ListView):
 #----------------------------------- Historial por cliente ---------------------------------
 
 class ListaHistorial(ListView):
-    
-    def get_queryset(self): 
-        self.cliente = get_object_or_404(clientes, id=self.args[0]) 
-        return historial.objects.filter(cliente=self.cliente).order_by('-fecha') 
+
+    def get_queryset(self):
+        self.cliente = get_object_or_404(clientes, id=self.args[0])
+        return historial.objects.filter(cliente=self.cliente).order_by('-fecha')
     def get_context_data(self,**kwargs):
         context = super(ListaHistorial,self).get_context_data(**kwargs)
         context['cliente']=self.cliente
@@ -49,10 +49,10 @@ class ListaHistorial(ListView):
 #----------------------------------- Citas por cliente ---------------------------------
 
 class ListaCitas(ListView):
-    
-    def get_queryset(self): 
-        self.cliente = get_object_or_404(clientes, id=self.args[0]) 
-        return citas.objects.filter(cliente=self.cliente).order_by('-fecha') 
+    paginate_by = 7
+    def get_queryset(self):
+        self.cliente = get_object_or_404(clientes, id=self.args[0])
+        return citas.objects.filter(cliente=self.cliente).order_by('-fecha')
     def get_context_data(self,**kwargs):
         context = super(ListaCitas,self).get_context_data(**kwargs)
         context['cliente']=self.cliente

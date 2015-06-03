@@ -13,6 +13,19 @@
 	height: 560px;
 	border-right: 2px solid #075E55;
 }
+#historial_esquerda_foto
+{
+	float: left;
+	height: 160px;
+	width: 160px;
+	margin-left: 41px;
+	margin-bottom : 20px;
+	padding-top: 10px;
+	padding-left: 10px;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px 8px 8px 8px;
+	box-shadow: 4px 4px #e0e0e0;
+}
 
 #historial_dereita
 {
@@ -22,7 +35,7 @@
 	margin-left: 20px;
 	width: 680px;
 	height: 520px;
-	/*overflow: auto;*/
+	overflow: auto;
 }
 
 #historial_paginado

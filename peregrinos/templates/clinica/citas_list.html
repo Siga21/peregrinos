@@ -9,16 +9,19 @@ Citas
 {% endblock %}
 {% block content %}
 <div id="citas_cuerpo">
-	<div id="citas_esquerda">	
-	<br />
-	{% if cliente.fotografia %}
-		<img src="{{ cliente.fotografia.url }}" width="150" height="150" >
-	{% else %}
-		<img src="/media/imagenes/user.jpg" width="150" height="150">
-	{% endif %}
-	<br />	
-	<h1>{{cliente.nombre | capfirst}} {{cliente.apellidos | capfirst}}</h1>
-        <h2>{{cliente.telefono}} --  {{cliente.telefono2}}</h2>
+	<div id="citas_esquerda">
+			<div id="citas_esquerda_foto">
+				{% if cliente.fotografia %}
+					<img src="{{ cliente.fotografia.url }}" width="150" height="150" >
+				{% else %}
+					<img src="/media/imagenes/user.jpg" width="150" height="150">
+				{% endif %}
+			</div>
+		<center>
+			<spam class="rotulo">{{cliente.nombre | capfirst}} {{cliente.apellidos | capfirst}}</spam>
+			<br />
+    	<spam class="rotulo">{{cliente.telefono}} --  {{cliente.telefono2}}</spam>
+	  </center>
 	<br />
 	</div>
 	<div id="citas_dereita">
@@ -28,17 +31,29 @@ Citas
 
 		<spam > {{ citas.cliente }} </spam>
 		<br />
-		<spam > {{ citas.fecha | date:"H:i" }} </spam>
+		<spam > {{ citas.fecha | date:"SHORT_DATE_FORMAT" }} </spam>
                 <br />
 		<spam > {{ citas.observaciones }} </spam>
-		<hr />			
+		<hr />
 
         {% endfor %}
         {% else %}
             <p>No hay citas.</p>
     {% endif %}
 	</div>
-		
+	<div id="citas_paginado">
+		<span class="steplinks">
+			{% if page_obj.has_previous %}
+			<a href="?page={{ page_obj.previous_page_number }}"><button>Anterior</button></a>
+			{% endif %}
+			<span class="current">
+				Pagina {{ page_obj.number }} de {{ paginator.num_pages }}.
+			</span>
+			{% if page_obj.has_next %}
+			<a href="?page={{ page_obj.next_page_number }}"><button>Siguiente</button></a>
+			{% endif %}
+		</span>
+	</div>
 </div>
 
 {% endblock %}

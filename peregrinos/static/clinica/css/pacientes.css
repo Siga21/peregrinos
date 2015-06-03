@@ -28,7 +28,7 @@
 	margin-top: 5px;
 	margin-left: 3px;
 	padding-top: 3px;
-	width: 632px;
+	width: 575px;
 	height: 52px;
 	border: 1px solid #e3e3e3;
 	border-radius: 8px 8px 8px 8px;
@@ -52,7 +52,7 @@
 	margin-top: 15px;
 	margin-bottom: 15px;
 	height: 20px;
-	width: 300px;
+	width: 375px;
 	font-size: 18px;
 	color: #075E55;
 }
@@ -61,6 +61,17 @@
 	text-decoration : none;
 	color: #075E55;
 }
+#avatar_accesos
+{
+	float: left;
+	margin-left: 5px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 40px;
+	width: 40px;
+}
+
 #paciente_paginado
 {
 	float:left;

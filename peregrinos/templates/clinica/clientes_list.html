@@ -10,9 +10,9 @@ Lista de pacientes
 {% block content %}
 <div id="pacientes_cuerpo">
 		<div id="pacientes_esquerda">
-			<a href="/paciente/agregar"><button class="acceso_rapido">Nuevo Cliente</button></a>
+			<a href="/paciente/agregar"><button class="acceso_rapido">Nuevo</button></a>
 			<br /><br />
-			<a href="#"><button class="acceso_rapido">Buscar Cliente</button></a>
+			<a href="#"><button class="acceso_rapido">Buscar</button></a>
 		</div>
 		<div id="pacientes_dereita">
     {% if object_list %}
@@ -29,10 +29,12 @@ Lista de pacientes
 					<div id="nombre_paciente">
 						<a href="/pacientes_detalle/{{pacientes.id}}/"><spam>{{ pacientes.apellidos | capfirst }} , {{ pacientes.nombre | capfirst }}</spam></a>
 					</div>
-	 				<a href="/historial/{{pacientes.id}}/">Historial<a>
-					<hr />
-                                        <a href="/citas/{{pacientes.id}}/">Citas<a>
-					<hr />
+					<div id="avatar_accesos">
+						<a href="/citas/{{pacientes.id}}/"><img src="/media/imagenes/clock.png"><a>
+					</div>
+					<div id="avatar_accesos">
+          	<a href="/historial/{{pacientes.id}}/"><img src="/media/imagenes/historial.png"><a>
+					</div>
 				</div>
         {% endfor %}
         {% else %}
