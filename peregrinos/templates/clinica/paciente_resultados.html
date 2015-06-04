@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes_resultados.css'   %}"   />
+{% endblock %}
+{% block titulo %}
+Resultados de la bBúsqueda
+{% endblock %}
+{% block content %}
+<div id="resultados_cuerpo">
+	<div id="seleccion_central">
+		{% if busqueda %}
+			{% for busqueda in busqueda %}
+				<div id="barra_pacientes">
+					<a href="/pacientes_detalle/{{busqueda.id}}/"><spam>{{ busqueda.apellidos | capfirst }} , {{ busqueda.nombre | capfirst }}</spam></a>
+				</div>
+				{% endfor %}
+		{% else %}
+			<spam> No hay coincidencias </spam>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

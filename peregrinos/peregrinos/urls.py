@@ -13,16 +13,18 @@ urlpatterns = patterns('',
         }),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^index/', 'clinica.views.index', name = 'index'),
-    #url(r'^pacientes/', 'clinica.views.pacientes', name = 'pacientes'),
     url(r'^pacientes/',ListaPacientes.as_view(), name = 'ListaPacientes'),
-    #url(r'^pacientes_detalle/(?P<clientes_id>[0-9]+)/$', 'clinica.views.pacientes_detalle', name = 'pacientes_detalle'),
-    url(r'^pacientes_detalle/(?P<pk>[0-9]+)/$', DetallePacientes.as_view(), name = 'pacientes_detalle'),
+	url(r'^pacientes_detalle/(?P<pk>[0-9]+)/$', DetallePacientes.as_view(), name = 'pacientes_detalle'),
     url(r'^pacientes_borrar/(?P<clientes_id>[0-9]+)/$', 'clinica.views.clientesDelete', name = 'pacientes_borrado'),
-    #url(r'^paciente_nuevo/$' , 'clinica.views.paciente_nuevo'),
     url(r'^paciente/agregar/$', CrearPaciente.as_view(), name='agregarpaciente'),
+	url(r'^pacientes_buscar/$', 'clinica.views.buscar_paciente', name = 'paciente_buscar'),
+	url(r'^pacientes_resultado/$', 'clinica.views.resultado_paciente', name = 'paciente_resultado'),
     url(r'^historial/([\w]+)/$', ListaHistorial.as_view(), name='listahistorial' ),
     url(r'^citas/([\w]+)/$', ListaCitas.as_view(), name='listacitas' ),
- 	
+ 	#url(r'^pacientes/', 'clinica.views.pacientes', name = 'pacientes'),
+    #url(r'^pacientes_detalle/(?P<clientes_id>[0-9]+)/$', 'clinica.views.pacientes_detalle', name = 'pacientes_detalle'),
+	#url(r'^paciente_nuevo/$' , 'clinica.views.paciente_nuevo'),
+
 )
 
 if settings.DEBUG:

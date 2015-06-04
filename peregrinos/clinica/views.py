@@ -88,4 +88,17 @@ def clientesDelete(request, clientes_id):
     #return render(request, 'clinica/index.html', context)
     return HttpResponseRedirect('/index')
 
-#-------------------------------------------------------------------------------------------------
+#------------------------------ Buscar Pacientes  ---------------------------------------
+
+def buscar_paciente(request):
+	return render(request, 'clinica/paciente_buscar.html')
+
+#------------------------------Resultado busqueda paceintes  ----------------------------
+def resultado_paciente(request):
+	if 'q' in request.GET and request.GET['q']:
+		q = request.GET['q']
+		busqueda = clientes.objects.filter(nombre__icontains=q)
+		return render(request, 'clinica/paciente_resultados.html', {'busqueda': busqueda, 'query':q})
+	else:
+		return render(request, 'clinica/paciente_buscar.html', {'error': True})
+#----------------------------------------------------------------------------------------
