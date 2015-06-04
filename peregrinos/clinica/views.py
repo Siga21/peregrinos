@@ -97,8 +97,13 @@ def buscar_paciente(request):
 def resultado_paciente(request):
 	if 'q' in request.GET and request.GET['q']:
 		q = request.GET['q']
-		busqueda = clientes.objects.filter(nombre__icontains=q)
-		return render(request, 'clinica/paciente_resultados.html', {'busqueda': busqueda, 'query':q})
+		campo = request.GET['campo']
+		if campo=='1':
+			busqueda = clientes.objects.filter(nombre__icontains=q)
+			return render(request, 'clinica/paciente_resultados.html', {'busqueda': busqueda, 'query':q})
+		else:
+			busqueda = clientes.objects.filter(apellidos__icontains=q)
+			return render(request, 'clinica/paciente_resultados.html', {'busqueda': busqueda, 'query':q})
 	else:
 		return render(request, 'clinica/paciente_buscar.html', {'error': True})
 #----------------------------------------------------------------------------------------

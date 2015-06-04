@@ -13,10 +13,15 @@ Búsqueda de pacientes
 		<spam style='color:#ff0000'>Introduce un criterio de búsqueda, mamón</spam>
 		{% endif %}
 		<div id="box_busqueda">
-			<spam class="rotulo">introduce el nombre</spam>
+			<spam class="rotulo">introduce el termino</spam>
 			<br /><br />
 			<form action = "/pacientes_resultado/" method="get">
 				<input type="text" name="q">
+				<br />
+				<select size="1" name="campo">
+					<option VALUE="1">por nombre</option>
+					<option value="2">por apellidos</option>
+				</select>
 				<input type="submit" value="buscar">
 			</form>
 		</div>
