@@ -1,0 +1,20 @@
+#fclientes_cuerpo
+{
+  width: 950px;
+  height: 600px;
+}
+
+#box_cliente
+{
+  width: 375px;
+  height: 150px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-left: 25px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px 8px 8px 8px;
+  box-shadow: 4px 4px #e0e0e0;
+  text-align: center;
+}
