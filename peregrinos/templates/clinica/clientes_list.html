@@ -2,61 +2,66 @@
 {%   load   staticfiles   %}
 
 {% block elcss %}
-<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes.css'   %}"   />
+<!--<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes.css'   %}"   />-->
 {% endblock %}
 {% block titulo %}
 Lista de pacientes
 {% endblock %}
 {% block content %}
-<div id="pacientes_cuerpo">
-		<div id="pacientes_esquerda">
-			<a href="/paciente/agregar"><button class="acceso_rapido">Nuevo</button></a>
-			<br /><br />
-			<a href="/pacientes_buscar"><button class="acceso_rapido">Buscar</button></a>
-		</div>
-		<div id="pacientes_dereita">
-    {% if object_list %}
-
-        {% for pacientes  in object_list %}
-   			<div id="box_paciente">
-					<div id="avatar_paciente">
-						{% if pacientes.fotografia %}
-							<img src="{{ pacientes.fotografia.url }}" width="40" height="40" >
-						{% else %}
-							<img src="/media/imagenes/user.jpg" width="40" height="40">
-						{% endif %}
-					</div>
-					<div id="nombre_paciente">
-						<a href="/pacientes_detalle/{{pacientes.id}}/"><spam>{{ pacientes.apellidos | capfirst }} , {{ pacientes.nombre | capfirst }}</spam></a>
-					</div>
-					<div id="avatar_accesos">
-						<a href="/citas/{{pacientes.id}}/"><img src="/media/imagenes/clock.png"><a>
-					</div>
-					<div id="avatar_accesos">
-          	<a href="/historial/{{pacientes.id}}/"><img src="/media/imagenes/historial.png"><a>
-					</div>
-				</div>
-        {% endfor %}
-        {% else %}
-            <p>No hay clientes registrados.</p>
-    {% endif %}
-		<br /><br /><br />
-		</div>
-		<div id="paciente_paginado">
-			<div class="pagination">
-				<span class="steplinks">
-					{% if page_obj.has_previous %}
-					<a href="?page={{ page_obj.previous_page_number }}"><button>Anterior</button></a>
-					{% endif %}
-					<span class="current">
-						Pagina {{ page_obj.number }} de {{ paginator.num_pages }}.
-					</span>
-					{% if page_obj.has_next %}
-					<a href="?page={{ page_obj.next_page_number }}"><button>Siguiente</button></a>
-					{% endif %}
-				</span>
+<row>
+	<div class="col-md-3">
+		<a href="/paciente/agregar" class="btn btn-primary btn-lg btn-block">Nuevo</a>
+		<a href="/pacientes_buscar" class="btn btn-primary btn-lg btn-block">Buscar</a>
+	</div>
+	<div class="col-md-9" >
+		<div class="panel panel-default">
+			<div class="panel-heading">Pacientes</div>
+			<div if ="panel-body">
+				{% if object_list %}
+				<table class="table table-striped">
+					<th>fotografia</th>
+					<th>nombre</th>
+					<th>citas</th>
+					<th>Historial</th>
+          {% for pacientes  in object_list %}
+						<tr>
+							<td>
+								{% if pacientes.fotografia %}
+									<img src="{{ pacientes.fotografia.url }}"  class="img-circle" width="40" height="40" >
+								{% else %}
+									<img src="/media/imagenes/user.jpg"  class="img-circle" width="40" height="40">
+								{% endif %}
+							</td>
+							<td><a href="/pacientes_detalle/{{pacientes.id}}/"><spam>{{ pacientes.apellidos | capfirst }} , {{ pacientes.nombre | capfirst }}</spam></a></td>
+							<td><a href="/citas/{{pacientes.id}}/" class="btn btn-primary">Citas<a></td>
+							<td><a href="/historial/{{pacientes.id}}/" class="btn btn-primary">Historial<a></td>
+					{% endfor %}
+				  </table>
+		    {% else %}
+        	<p class="text-warning">No hay clientes registrados.</p>
+        {% endif %}
 			</div>
 		</div>
-</div>
+	</div>
+</row>
+<row>
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-12">
+		<div class="pagination">
+			<span class="steplinks">
+				{% if page_obj.has_previous %}
+				<a href="?page={{ page_obj.previous_page_number }}"><button class="btn btn-default">Anterior</button></a>
+				{% endif %}
+				<span class="current">
+					Pagina {{ page_obj.number }} de {{ paginator.num_pages }}.
+				</span>
+				{% if page_obj.has_next %}
+				<a href="?page={{ page_obj.next_page_number }}"><button class="btn btn-default">Siguiente</button></a>
+				{% endif %}
+			</span>
+		</div>
+	</div>
+</row>
 
 {% endblock %}

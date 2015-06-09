@@ -2,33 +2,46 @@
 {%   load   staticfiles   %}
 
 {% block elcss %}
-<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/index.css'   %}"   />
+<!-- <link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/index.css'   %}"   />-->
 {% endblock %}
-
+{% block titulo %} Peregrinos {% endblock %}
 {% block content %}
-<div id="index_cuerpo">
-		<div id="index_esquerda">
-			<a href="/paciente/agregar"><button class="acceso_rapido">Nuevo cliente</button></a>
-			<br /><br />
-		</div>
-		<div id="index_dereita">
-		{% if las_citas %}
-			{% for citas in las_citas %}
-				<div id="box_cita">
-					<div id="reloj_cita">
-						<img src="/media/imagenes/clock.png">
-					</div>
-					<div id="hora_cita">
-						<spam>{{ citas.fecha | date:"H:i"}}</spam>
-					</div>
-					<spam class="paciente">{{ citas.cliente | capfirst }} {{ citas.cliente.apellidos | capfirst}} -- ( {{citas.cliente.telefono}} ) -- ( {{citas.cliente.telefono2}} ) </spam>
-					<br />
-					<spam>Notas : {{ citas.observaciones }}</spam>
-				</div>
-			{% endfor %}
-		{% else %}
-			<p>SIN  CITAS</p>
-		{% endif %}
-		</div>
-</div>
+<row>
+	<div class="col-md-3">
+		<a href="/paciente/agregar" class="btn btn-primary btn-lg btn-block">Nuevo Paciente</a>
+		<a href="/pacientes" class="btn btn-primary btn-lg btn-block">Pacientes</a>
+    </div>
+    <div class="col-md-9" >
+	    <div class="panel panel-default">
+ 		 	<div class="panel-heading">Citas de Hoy</div>
+         <div if ="panel-body">
+         	{% if las_citas %}
+         		<table class="table table-striped">
+                  <th>#</th>
+                  <th>hora</th>
+                  <th>paciente</th>
+                  <th>telefono</th>
+                  <th>observaciones</th>
+                  <th>Historial</th>
+                  <th>Citas</th>
+                  {% for citas in las_citas %}
+                  	<tr>
+                  		<td><img src="/media/imagenes/clock.png" width="30" height="30"></td>
+								<td>{{ citas.fecha | date:"H:i" }}</td>
+								<td>{{ citas.cliente | capfirst }} {{ citas.cliente.apellidos | capfirst}}</td>
+								<td>{{ citas.cliente.telefono }}</td>
+								<td>{{ citas.observaciones }}</td>
+                        <td><a href="#" class="btn btn-primary">Historial</a>
+                    		<td><a href="#" class="btn btn-primary">Citas</a>
+                     </tr>
+                  {% endfor %}
+                  </table>
+				{% else %}
+					<p class="text-warning">Sin citas</p>
+				{% endif %}
+         </div>
+         </div>
+       </div>
+    </div>
+</row>
 {% endblock %}
