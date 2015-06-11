@@ -47,20 +47,25 @@ Lista de pacientes
 <row>
 	<div class="col-md-3">
 	</div>
-	<div class="col-md-12">
-		<div class="pagination">
-			<span class="steplinks">
-				{% if page_obj.has_previous %}
-				<a href="?page={{ page_obj.previous_page_number }}"><button class="btn btn-default">Anterior</button></a>
-				{% endif %}
+	<div class="col-md-9">
+		<!--<div class="pagination">
+
 				<span class="current">
 					Pagina {{ page_obj.number }} de {{ paginator.num_pages }}.
 				</span>
+
+		</div>-->
+		<nav>
+			<ul class="pager">
+				{% if page_obj.has_previous %}
+				<li class="previus"><a href="?page={{ page_obj.previous_page_number }}"><spam aria-hideen="true">&larr;</spam>Anterior</a></li>
+				{%endif%}
+				<li> Pagina {{ page_obj.number }} de {{ paginator.num_pages }}.</li>
 				{% if page_obj.has_next %}
-				<a href="?page={{ page_obj.next_page_number }}"><button class="btn btn-default">Siguiente</button></a>
-				{% endif %}
-			</span>
-		</div>
+				<li class="next"><a href="?page={{ page_obj.next_page_number }}">Siguiente<spam aria-hideen="true">&rarr;</spam></a></li>
+				{%endif%}
+			</ul>
+		</nav>
 	</div>
 </row>
 

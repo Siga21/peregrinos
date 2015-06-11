@@ -2,7 +2,7 @@
 
 from django.forms import ModelForm
 from django import forms
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from clinica.models import clientes
 
@@ -15,3 +15,6 @@ class CrearPaciente(CreateView):
     model = clientes
     fields = ['nombre', 'apellidos', 'telefono', 'telefono2',] 
 
+class EditarPaciente(UpdateView):
+    model = clientes
+    fields = ['nombre', 'apellidos', 'telefono', 'telefono2',] 
