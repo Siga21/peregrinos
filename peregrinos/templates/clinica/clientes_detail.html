@@ -8,16 +8,55 @@
 Detalle del cliente
 {% endblock %}
 {% block content %}
-<div id="pdetalle_cuerpo">
-	<div id="pdetalle_esquerda">
-		<a href="/pacientes_borrar/{{clientes.id}}/"><button class="acceso_rapido">Borrar</button></a>
-		<br /><br />
-		<a href="/citas/{{clientes.id}}/"><button class="acceso_rapido"><img src="/media/imagenes/clock.png"></button><a>
-		<br /><br />
-		<a href="/historial/{{clientes.id}}/"><button class="acceso_rapido"><img src="/media/imagenes/historial.png"></button><a>
+<row>
+	<div class="col-md-3">
+		<a href="/paciente_borrar/{{ clientes.id }}/" class="btn btn-danger btn-lg btn-block">Borrar</a>
+		<a href="/citas/{{ clientes.id }}/" class="btn btn-primary btn-lg btn-block">Citas del paciente</a>
+		<a href="/historial/{{ clientes.id }}/" class="btn btn-primary btn-lg btn-block">Historial del paciente</a>
 	</div>
-	<div id="pdetalle_dereita">
-		<div id="pdetalle_imagen">
+	<div class="col-md-9">
+		<div class="thumbnail">
+			<br />
+			{% if clientes.fotografia %}
+				<img src="{{ clientes.fotografia.url }}" class="img-rounded" width="150" height="200" >
+			{% else %}
+				<img src="/media/imagenes/user.jpg" class="img-rounded">
+			{% endif %}
+			<br/><br />
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Datos del Cliente
+				</div>
+				<div if ="panel-body">
+						<table class="table table-striped">
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>Telefono</th>
+						<th>Telefono 2</th>
+						<th>Antigüedad</td>
+						<tr>
+							<td>{{ clientes.nombre | capfirst}}</td>
+							<td>{{ clientes.apellidos | capfirst}}</td>
+							<td>{{ clientes.telefono }}</td>
+							<td>{{ clientes.telefono2 }}</td>
+							<td>{{ clientes.antiguedad | date:"SHORT_DATE_FORMAT" }}</td>
+						</tr>
+					  </table>
+			  </div>
+			</div>
+		</div>
+	</div>
+</row>
+
+
+
+
+
+
+
+<!--
+
+
 			{% if clientes.fotografia %}
 				<img src="{{ clientes.fotografia.url }}" width="150" height="150" >
 				<br />
@@ -54,5 +93,5 @@ Detalle del cliente
 			</table>
 		</div>
 	</div>
-</div>
+</div> -->
 {% endblock %}
