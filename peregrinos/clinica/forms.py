@@ -13,8 +13,8 @@ from clinica.models import clientes
 
 class CrearPaciente(CreateView):
     model = clientes
-    fields = ['nombre', 'apellidos', 'telefono', 'telefono2', 'fotografia']
+    fields = ['nombre', 'apellidos', 'telefono', 'telefono2', 'fotografia',]
 
 class EditarPaciente(UpdateView):
     model = clientes
-    fields = ['nombre', 'apellidos', 'telefono', 'telefono2', 'fotografia']
+    fields = ['nombre', 'apellidos', 'telefono', 'telefono2', 'fotografia',]

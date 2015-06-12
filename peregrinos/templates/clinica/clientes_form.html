@@ -19,7 +19,7 @@ Agregar cliente
       </p>
     {% endif %}
     <br /><br />
-    <form action="" role="form" method="post">{% csrf_token %}
+    <form enctype="multipart/form-data" action="" role="form" method="post">{% csrf_token %}
       <div class="form-group">
         {{ form.nombre.errors }}
         <label for="id_nombre" class="text-primary" >Nombre</label>
@@ -46,7 +46,7 @@ Agregar cliente
         <input type="file" id={{ form.fotografia }}
         <p class="help-block">Fotografia del cliente.</p>
       </div>
-      <button type="submit" class="btn btn-default">Enviar</button>
+      <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
     <br /<br />
   </div>
