@@ -3,7 +3,7 @@
 {%   load   staticfiles   %}
 
 {% block elcss %}
-<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/clientes_form.css'   %}"   />
+<!--<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/clientes_form.css'   %}"   />-->
 {% endblock %}
 
 <body>
@@ -11,68 +11,46 @@
 Agregar cliente
 {% endblock %}
 {% block content %}
-<div id="fclientes_cuerpo">
+<row>
+  <div class="col-md-6 col-md-offset-3">
     {% if form.errors %}
-        <p style="color: red;">
-            Por favor corrige lo siguiente:
-        </p>
+      <p style="color: red;">
+        Por favor corrige lo siguiente:
+      </p>
     {% endif %}
-    <div id="box_cliente">
-    <table border="0">
-    <form action="" method="post">{% csrf_token %}
-        <tr>
-        <div class="field">
-            {{ form.nombre.errors }}
-            <td>
-              <label for="id_nombre" class="rotulo">Nombre:</label>
-            </td>
-            <td>
-              {{ form.nombre }}
-            </td>
-        </div>
-        </tr>
-        <tr>
-        <div class="field">
-            {{ form.apellidos.errors }}
-            <td>
-              <label for="id_apellidos" class="rotulo">Apellidos:</label>
-            </td>
-            <td>
-              {{ form.apellidos }}
-            </td>
-        </div>
-        </tr>
-        <tr>
-        <div class="field">
-            {{ form.email.errors }}
-            <td>
-              <label for="id_telefono" class="rotulo">Telefono:</label>
-            </td>
-            <td>
-              {{ form.telefono }}
-            </td>
-        </div>
-        </tr>
-        <tr>
-        <div class="field">
-            {{ form.email.errors }}
-            <td>
-              <label for="id_telefono2" class="rotulo">Telefono 2:</label>
-            </td>
-            <td>
-              {{ form.telefono2 }}
-            </td>
-        </div>
-       </tr>
-       <tr>
-        <td colspan="2" align="center">
-        <input type="submit" value="Enviar">
-        </td>
-      </tr>
+    <br /><br />
+    <form action="" role="form" method="post">{% csrf_token %}
+      <div class="form-group">
+        {{ form.nombre.errors }}
+        <label for="id_nombre" class="text-primary" >Nombre</label>
+        <input type="text" class="form-control" placeholder="Introduce el nombre" id={{ form.nombre }}
+      </div>
+      <div class="form-group">
+        {{ form.apellidos.errors }}
+        <label for="id_apellidos" class="text-primary">Apellidos</label>
+        <input type="text" class="form-control" placeholder="Introduce los apellidos" id={{ form.apellidos }}
+      </div>
+      <div class="form-group">
+        {{ form.telefono.errors }}
+        <label for="id_telefono" class="text-primary">Telefono</label>
+        <input type="text" class="form-control" placeholder="Introduce el telefono" id={{ form.telefono }}
+      </div>
+      <div class="form-group">
+        {{ form.telefono2.errors }}
+        <label for="id_telefono2" class="text-primary">Telefono 2</label>
+        <input type="text" class="form-control" placeholder="Introduce el telefono 2" id={{ form.telefono2 }}
+      </div>
+      <div class="form-group">
+        {{ from.fotografia.errors }}
+        <label for="id_fotografia" class="text-primary">Adjuntar una foto</label>
+        <input type="file" id={{ form.fotografia }}
+        <p class="help-block">Fotografia del cliente.</p>
+      </div>
+      <button type="submit" class="btn btn-default">Enviar</button>
     </form>
-  </table>
+    <br /<br />
   </div>
-</div>
+</row>
 {% endblock %}
 </body>
 

@@ -9,12 +9,12 @@ from clinica.models import clientes
 #class clienteForm(ModelForm):
 #	class Meta:
 #		model = clientes
-#		fields = "__all__" 
+#		fields = "__all__"
 
-class CrearPaciente(CreateView): 
+class CrearPaciente(CreateView):
     model = clientes
-    fields = ['nombre', 'apellidos', 'telefono', 'telefono2',] 
+    fields = ['nombre', 'apellidos', 'telefono', 'telefono2', 'fotografia']
 
 class EditarPaciente(UpdateView):
     model = clientes
-    fields = ['nombre', 'apellidos', 'telefono', 'telefono2',] 
+    fields = ['nombre', 'apellidos', 'telefono', 'telefono2', 'fotografia']
