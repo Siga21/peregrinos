@@ -32,48 +32,18 @@ Historial por paciente
 	</div>
 	<div class="col-md-9" >
 		{% if object_list %}
-			{% for historial  in object_list %}
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<spam><strong>{{ historial.fecha | date:"D j  F  Y H:i" }}</strong></spam>
-					</div>
-					<div if ="panel-body">
-						<br />
-						<p > {{ historial.comentario }} </p>
-						<br />
-						{% if historial.fotografia %}
-						<img src="{{ historial.fotografia.url }}" width="150" height="150" style="margin-left:25px" >
-						<br /><br />
-						{% endif %}
-					</div>
-				</div>
-			{% endfor %}
+			<div class="list-group">
+				{% for historial  in object_list %}
+					<spam class="list-group-item active"><strong>{{ historial.fecha | date:"D j  F  Y H:i" }}</strong></spam>
+					<spam class="list-group-item"><smal>{{ historial.comentario }}</smal></spam>
+					{% if historial.fotografia %}
+						<img src="{{ historial.fotografia.url }}" width="150" height="150" class="list-group-item" >
+					{% endif %}
+				{% endfor %}
+			</div>
 		{% else %}
 			<p>No hay historiales.</p>
 		{% endif %}
 	</div>
 </row>
-
-<!--
-
-
-
-    {% if object_list %}
-    	{% for historial  in object_list %}
-				<spam > {{ historial.cliente }} </spam>
-				<br />
-				<spam > {{ historial.fecha | date:"H:i" }} </spam>
-        <br />
-				<spam > {{ historial.comentario }} </spam>
-				<br />
-				{% if historial.fotografia %}
-					<img src="{{ historial.fotografia.url }}" width="150" height="150" >
-				{% endif %}
-				<hr />
-
-      {% endfor %}
-    {% else %}
-    	<p>No hay historiales.</p>
-    {% endif %}  -->
-
 {% endblock %}
