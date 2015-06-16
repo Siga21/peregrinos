@@ -22,10 +22,9 @@ Historial por paciente
 				<div class="panel-heading">
 					Paciente
 				</div>
-				<div if ="panel-body">
-					<br />
-					<p class="text-primary text-center"><strong>{{ cliente.apellidos | capfirst}},{{ cliente.nombre | capfirst}}</strong></p>
-					<p class="text-primary text-center">{{ cliente.telefono }}--{{ cliente.telefono2 }}</p>
+				<div class ="panel-body">
+					<spam class="text-primary">{{ cliente.apellidos | capfirst}},{{ cliente.nombre | capfirst}}</spam>
+					<spam class="text-primary">{{ cliente.telefono }}--{{ cliente.telefono2 }}</spam>
   			</div>
 				</div>
 			</div>
