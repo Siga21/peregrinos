@@ -2,29 +2,62 @@
 {%   load   staticfiles   %}
 
 {% block elcss %}
-<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/historial.css'   %}"   />
+<!--<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/historial.css'   %}"   />-->
 {% endblock %}
 {% block titulo %}
 Historial por paciente
 {% endblock %}
 {% block content %}
-<div id="historial_cuerpo">
-	<div id="historial_esquerda">
-		<div id="historial_esquerda_foto">
-			{% if cliente.fotografia %}
-				<img src="{{ cliente.fotografia.url }}" width="150" height="150" >
-			{% else %}
-				<img src="/media/imagenes/user.jpg" width="150" height="150">
-			{% endif %}
-		</div>
-		<center>
-		  <spam class="rotulo">{{cliente.nombre | capfirst}} {{cliente.apellidos | capfirst}}</spam>
+<row>
+	<div class="col-md-3">
+		<div class="thumbnail">
 			<br />
-      <spam class="rotulo">{{cliente.telefono}} --  {{cliente.telefono2}}</spam>
-			<br/>
-		</center>
+			{% if cliente.fotografia %}
+			<img src="{{ cliente.fotografia.url }}" class="img-rounded" width="150" height="200" >
+			{% else %}
+			<img src="/media/imagenes/user.jpg" class="img-rounded">
+			{% endif %}
+			<br/><br />
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Paciente
+				</div>
+				<div if ="panel-body">
+					<br />
+					<p class="text-primary text-center"><strong>{{ cliente.apellidos | capfirst}},{{ cliente.nombre | capfirst}}</strong></p>
+					<p class="text-primary text-center">{{ cliente.telefono }}--{{ cliente.telefono2 }}</p>
+  			</div>
+				</div>
+			</div>
 	</div>
-	<div id="historial_dereita">
+	<div class="col-md-9" >
+		{% if object_list %}
+			{% for historial  in object_list %}
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<spam><strong>{{ historial.fecha | date:"D j  F  Y H:i" }}</strong></spam>
+					</div>
+					<div if ="panel-body">
+						<br />
+						<p > {{ historial.comentario }} </p>
+						<br />
+						{% if historial.fotografia %}
+						<img src="{{ historial.fotografia.url }}" width="150" height="150" style="margin-left:25px" >
+						<br /><br />
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>No hay historiales.</p>
+		{% endif %}
+	</div>
+</row>
+
+<!--
+
+
+
     {% if object_list %}
     	{% for historial  in object_list %}
 				<spam > {{ historial.cliente }} </spam>
@@ -41,9 +74,6 @@ Historial por paciente
       {% endfor %}
     {% else %}
     	<p>No hay historiales.</p>
-    {% endif %}
-	</div>
-
-</div>
+    {% endif %}  -->
 
 {% endblock %}
