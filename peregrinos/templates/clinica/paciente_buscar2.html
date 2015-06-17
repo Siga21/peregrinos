@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes_buscar.css'   %}"   />
+{% endblock %}
+{% block titulo %}
+Búsqueda de pacientes
+{% endblock %}
+{% block content %}
+<div id="bpacientes_cuerpo">
+	{% if error %}
+		<spam style='color:#ff0000'>Introduce un criterio de búsqueda, mamón</spam>
+		{% endif %}
+		<div id="box_busqueda">
+			<spam class="rotulo">introduce el termino</spam>
+			<br /><br />
+			<form action = "/pacientes_resultado/" method="get">
+				<input type="text" name="q">
+				<br />
+				<select size="1" name="campo">
+					<option VALUE="nombre">por nombre</option>
+					<option value="apellidos">por apellidos</option>
+					<option value="telefono">por telefono</option>
+				</select>
+				<input type="submit" value="buscar">
+			</form>
+		</div>
+</div>
+{% endblock %}
