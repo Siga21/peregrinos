@@ -13,27 +13,45 @@ Búsqueda de pacientes
 {% block content %}
 <row>
     <div class="col-md-6 col-md-offset-3">
-	{% if error %}
-		<spam style='color:#ff0000'>Introduce un criterio de búsqueda</spam>
-	{% endif %}
-    <form class="form-search" action = "/pacientes_resultado/" method="get">
-    	<input type="text" class="input-medium search-query" name="q">
-		<label class="radio">
-			<input type="radio" name="campo" id="opcion1" value="nombre" checked>
-			Seleccionar para búsqueda por nombre.
-		</label>
-		<label class="radio">
-			<input type="radio" name="campo" id="opcion2" value="apellidos">
-			Seleccionar para búsqueda por apellidos.
-		</label>
-		<label class="radio">
-			<input type="radio" name="campo" id="opcion3" value="telefono">
-			Seleccionar para búsqueda por teléfono.
-		</label>
-		<button type="submit" class="btn btn-primary">Búsqueda</button>
-    </form>
+      <div class="panel panel-default">
+        <div class="panel-heading">Búsqueda</div>
+        <div class="panel-body">
+          {% if error %}
+		        <spam style='color:#ff0000'>Introduce un criterio de búsqueda</spam>
+	        {% endif %}
+          <form class="form-search" action = "/pacientes_resultado/" method="get">
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+              <input type="text" class="form-control" name="q" placeholder="Nombre de usuario">
+            </div>
+            <br />
+            <input type="radio" name="campo" id="opcion1" value="nombre" checked>
+            Seleccionar para búsqueda por nombre.
+            <br/>
+            <input type="radio" name="campo" id="opcion2" value="apellidos">
+            Seleccionar para búsqueda por apellidos.
+            <br />
+            <input type="radio" name="campo" id="opcion3" value="telefono">
+            Seleccionar para búsqueda por teléfono.
+            <br /><br />
+            <!--
+    	       <input type="text" class="input-medium search-query" name="q"> -
+		         <label class="radio">
+			            <input type="radio" name="campo" id="opcion1" value="nombre" checked>
+			               Seleccionar para búsqueda por nombre.
+		         </label>
+		         <label class="radio">
+			            <input type="radio" name="campo" id="opcion2" value="apellidos">
+			               Seleccionar para búsqueda por apellidos.
+		         </label>
+		         <label class="radio">
+			            <input type="radio" name="campo" id="opcion3" value="telefono">
+			               Seleccionar para búsqueda por teléfono.
+		         </label> -->
+		         <button type="submit" class="btn btn-primary btn-lg btn-block">Búsqueda</button>
+          </form>
+        </div>
+      </div>
 	</div>
 </row>
 {% endblock %}
-
-
