@@ -1,39 +1,16 @@
-{% extends "base.html" %}
-{%   load   staticfiles   %}
-
-{% block elcss %}
-<!--<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/historial.css'   %}"   />-->
-{% endblock %}
+{% extends "clinica/plantilla_clientes.html" %}
 {% block titulo %}
-Historial por paciente
+Historial del Paciente
 {% endblock %}
-{% block content %}
-<row>
-	<div class="col-md-3">
-		<div class="thumbnail">
-			<br />
-			{% if cliente.fotografia %}
-			<img src="{{ cliente.fotografia.url }}" class="img-rounded" width="150" height="200" >
-			{% else %}
-			<img src="/media/imagenes/user.jpg" class="img-rounded">
-			{% endif %}
-			<br/><br />
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					Paciente
-				</div>
-				<div class ="panel-body">
-					<spam class="text-primary">{{ cliente.apellidos | capfirst}},{{ cliente.nombre | capfirst}}</spam>
-					<spam class="text-primary">{{ cliente.telefono }}--{{ cliente.telefono2 }}</spam>
-  			</div>
-				</div>
-			</div>
-	</div>
+{% block botones %}
+<a href="/historial_agregar/{{ cliente.id }}" class="btn btn-primary btn-lg btn-block">Nueva Historia</a>
+{% endblock %}
+{% block lista %}
 	<div class="col-md-9" >
 		{% if object_list %}
 			<div class="list-group">
 				{% for historial  in object_list %}
-					<spam class="list-group-item active"><strong>{{ historial.fecha | date:"D j  F  Y H:i" }}</strong></spam>
+			<a href="/historial_editar/{{historial.id}}/" class="list-group-item active"><strong>{{ historial.fecha | date:"D j  F  Y H:i" }}</strong></a>
 					<spam class="list-group-item"><smal>{{ historial.comentario }}</smal></spam>
 					{% if historial.fotografia %}
 						<img src="{{ historial.fotografia.url }}" width="150" height="150" class="list-group-item" >
@@ -44,5 +21,4 @@ Historial por paciente
 			<p>No hay historiales.</p>
 		{% endif %}
 	</div>
-</row>
-{% endblock %}
+{% endblock lista %}

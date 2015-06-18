@@ -2,12 +2,9 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from clinica.views import ListaPacientes, DetallePacientes, ListaHistorial, ListaCitas
-from clinica.forms import CrearPaciente, EditarPaciente
+from clinica.forms import CrearPaciente, EditarPaciente, EditarHistorial, AgregarHistorial
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'peregrinos.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
 	url(r'^imagenes/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,
         }),
@@ -22,14 +19,11 @@ urlpatterns = patterns('',
 	url(r'^historial/([\w]+)/$', ListaHistorial.as_view(), name='listahistorial' ),
 	url(r'^citas/([\w]+)/$', ListaCitas.as_view(), name='listacitas' ),
 	url(r'^pacientes_editar/(?P<pk>[0-9]+)/$', EditarPaciente.as_view(), name = 'pacientes_editar'),
-	#url(r'^pacientes/', 'clinica.views.pacientes', name = 'pacientes'),
-	#url(r'^pacientes_detalle/(?P<clientes_id>[0-9]+)/$', 'clinica.views.pacientes_detalle', name = 'pacientes_detalle'),
-	#url(r'^paciente_nuevo/$' , 'clinica.views.paciente_nuevo'),
-
+	url(r'^historial_editar/(?P<pk>[0-9]+)/$', EditarHistorial.as_view(), name = 'historial_editar'),
+	url(r'^historial_agregar/(?P<pk>[0-9]+)/$', AgregarHistorial.as_view(), name = 'historial_agregar'),
 )
 
 if settings.DEBUG:
-    # static files (images, css, javascript, etc.)
-    urlpatterns += patterns('',
+     urlpatterns += patterns('',
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT}))

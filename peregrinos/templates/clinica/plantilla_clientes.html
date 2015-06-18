@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+
+{% endblock %}
+{% block titulo %}
+
+{% endblock %}
+{% block content %}
+<row>
+<div class="col-md-3">
+	<div class="thumbnail">
+		<br />
+		{% if cliente.fotografia %}
+			<img src="{{ cliente.fotografia.url }}" class="img-rounded" width="150" height="200" >
+		{% else %}
+			<img src="/media/imagenes/user.jpg" class="img-rounded">
+		{% endif %}
+		<br/><br />
+		<div class="panel panel-default">
+			<div class="panel-heading text-center">
+				Paciente
+			</div>
+			<div class ="panel-body">
+				<spam class="text-primary">{{ cliente.apellidos | capfirst}},{{ cliente.nombre | capfirst}}</spam>
+				<br />
+				<spam class="text-muted">{{ cliente.telefono }}--{{ cliente.telefono2 }}</spam>
+  			</div>
+		</div>
+		<br />
+		{% block botones %}
+		{% endblock botones %}
+	</div>
+</div>
+{% block lista %}
+{% endblock lista %}
+</row>
+{% endblock content %}
+

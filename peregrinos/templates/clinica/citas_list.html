@@ -1,59 +1,18 @@
-{% extends "base.html" %}
-{%   load   staticfiles   %}
-
-{% block elcss %}
-<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/citas.css'   %}"   />
-{% endblock %}
+{% extends "clinica/plantilla_clientes.html" %}
 {% block titulo %}
-Citas
+Citas del Paciente
 {% endblock %}
-{% block content %}
-<div id="citas_cuerpo">
-	<div id="citas_esquerda">
-			<div id="citas_esquerda_foto">
-				{% if cliente.fotografia %}
-					<img src="{{ cliente.fotografia.url }}" width="150" height="150" >
-				{% else %}
-					<img src="/media/imagenes/user.jpg" width="150" height="150">
-				{% endif %}
+{% block lista %}
+	<div class="col-md-9" >
+		{% if object_list %}
+			<div class="list-group">
+				{% for citas  in object_list %}
+					<spam class="list-group-item active"><strong>{{ citas.fecha | date:"D j  F  Y H:i" }}</strong></spam>
+					<spam class="list-group-item"><smal>{{ citas.observaciones }}</smal></spam>
+			        {% endfor %}
 			</div>
-		<center>
-			<spam class="rotulo">{{cliente.nombre | capfirst}} {{cliente.apellidos | capfirst}}</spam>
-			<br />
-    	<spam class="rotulo">{{cliente.telefono}} --  {{cliente.telefono2}}</spam>
-	  </center>
-	<br />
-	</div>
-	<div id="citas_dereita">
-    {% if object_list %}
-
-        {% for citas  in object_list %}
-
-		<spam > {{ citas.cliente }} </spam>
-		<br />
-		<spam > {{ citas.fecha | date:"SHORT_DATE_FORMAT" }} </spam>
-                <br />
-		<spam > {{ citas.observaciones }} </spam>
-		<hr />
-
-        {% endfor %}
-        {% else %}
-            <p>No hay citas.</p>
-    {% endif %}
-	</div>
-	<div id="citas_paginado">
-		<span class="steplinks">
-			{% if page_obj.has_previous %}
-			<a href="?page={{ page_obj.previous_page_number }}"><button>Anterior</button></a>
-			{% endif %}
-			<span class="current">
-				Pagina {{ page_obj.number }} de {{ paginator.num_pages }}.
-			</span>
-			{% if page_obj.has_next %}
-			<a href="?page={{ page_obj.next_page_number }}"><button>Siguiente</button></a>
-			{% endif %}
-		</span>
-	</div>
+	        {% else %}
+	            <p>No hay citas.</p>
+	  	{% endif %}
 </div>
-
-{% endblock %}
+{% endblock lista %}

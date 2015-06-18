@@ -8,7 +8,7 @@
 
 <body>
 {% block titulo %}
-Agregar cliente
+Agregar/Modificar cliente
 {% endblock %}
 {% block content %}
 <row>
@@ -41,10 +41,8 @@ Agregar cliente
         <input type="text" class="form-control" placeholder="Introduce el telefono 2" id={{ form.telefono2 }}
       </div>
       <div class="form-group">
-        {{ from.fotografia.errors }}
-        <label for="id_fotografia" class="text-primary">Adjuntar una foto</label>
-        <input type="file" id={{ form.fotografia }}
-        <p class="help-block">Fotografia del cliente.</p>
+        {{ form.fotografia.errors }}
+        {{ form.fotografia }}
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>

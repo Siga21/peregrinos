@@ -25,6 +25,9 @@ class historial(models.Model):
     comentario = models.TextField()
     fotografia = models.ImageField(upload_to='imagenes', blank=True)
 
+    def get_absolute_url(self): 
+        return reverse('index') 
+
 
 class citas(models.Model):
     fecha = models.DateTimeField(default=datetime.now, blank=True)
