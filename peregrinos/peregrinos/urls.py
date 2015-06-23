@@ -20,7 +20,7 @@ urlpatterns = patterns('',
 	url(r'^citas/([\w]+)/$', ListaCitas.as_view(), name='listacitas' ),
 	url(r'^pacientes_editar/(?P<pk>[0-9]+)/$', EditarPaciente.as_view(), name = 'pacientes_editar'),
 	url(r'^historial_editar/(?P<pk>[0-9]+)/$', EditarHistorial.as_view(), name = 'historial_editar'),
-	url(r'^historial_agregar/(?P<pk>[0-9]+)/$', AgregarHistorial.as_view(), name = 'historial_agregar'),
+	url(r'^historial_agregar/(?P<id>[0-9]+)/$', AgregarHistorial.as_view(), name = 'historial_agregar'),
 )
 
 if settings.DEBUG:

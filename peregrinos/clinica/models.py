@@ -15,8 +15,8 @@ class clientes(models.Model):
     def __unicode__(self):
     	return self.nombre
 
-    def get_absolute_url(self): 
-        return reverse('pacientes_detalle', kwargs={'pk': self.pk}) 
+    def get_absolute_url(self):
+        return reverse('pacientes_detalle', kwargs={'pk': self.pk})
 
 
 class historial(models.Model):
@@ -25,8 +25,8 @@ class historial(models.Model):
     comentario = models.TextField()
     fotografia = models.ImageField(upload_to='imagenes', blank=True)
 
-    def get_absolute_url(self): 
-        return reverse('index') 
+    def get_absolute_url(self):
+        return reverse('index')
 
 
 class citas(models.Model):

@@ -20,9 +20,6 @@ Agregar/modificar Historial
     {% endif %}
     <br /><br />
     <form enctype="multipart/form-data" action="" role="form" method="post">{% csrf_token %}
-        <p> Nombre : {{ pk }} </p>
-	{{ form.cliente.errors }}
-        {{ form.cliente }}
       <div class="form-group">
         {{ form.fecha.errors }}
         <label for="id_fecha" class="text-primary" >Fecha</label>

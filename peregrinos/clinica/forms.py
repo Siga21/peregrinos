@@ -3,6 +3,7 @@
 from django.forms import ModelForm
 from django import forms
 from django.views.generic.edit import CreateView, UpdateView
+from django.shortcuts import render_to_response, get_object_or_404
 
 from clinica.models import clientes, historial
 
@@ -25,5 +26,8 @@ class EditarHistorial(UpdateView):
 
 class AgregarHistorial(CreateView):
     model = historial
-    fields = ['cliente', 'fecha', 'comentario', 'fotografia',]
+    fields = ['fecha', 'comentario', 'fotografia',]
 
+    def form_valid(self, form):
+        form.instance.cliente = get_object_or_404(clientes, pk=self.kwargs['id'])
+        return super(AgregarHistorial, self).form_valid(form)
