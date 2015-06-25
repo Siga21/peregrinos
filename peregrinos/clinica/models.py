@@ -26,7 +26,7 @@ class historial(models.Model):
     fotografia = models.ImageField(upload_to='imagenes', blank=True)
 
     def get_absolute_url(self):
-        return reverse('index')
+        return reverse('listahistorial', args=[str(self.cliente.id)])
 
 
 class citas(models.Model):

@@ -10,11 +10,14 @@ Historial del Paciente
 		{% if object_list %}
 			<div class="list-group">
 				{% for historial  in object_list %}
-			<a href="/historial_editar/{{historial.id}}/" class="list-group-item active"><strong>{{ historial.fecha | date:"D j  F  Y H:i" }}</strong></a>
+			<a href="/historial_editar/{{historial.id}}/" class="list-group-item active"><span class="glyphicon glyphicon-edit text-right"></span><strong> {{ historial.fecha | date:"D j  F  Y H:i" }}</strong></a>
 					<spam class="list-group-item"><smal>{{ historial.comentario }}</smal></spam>
 					{% if historial.fotografia %}
 						<img src="{{ historial.fotografia.url }}" width="150" height="150" class="list-group-item" >
 					{% endif %}
+					<br />
+					<a href="/historial_borrar/{{ historial.id }}/" class="btn btn-danger">Borrar</a>
+					<br /><br />
 				{% endfor %}
 			</div>
 		{% else %}

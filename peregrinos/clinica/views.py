@@ -81,19 +81,14 @@ class DetallePacientes(DetailView):
 def clientesDelete(request, clientes_id):
     cliente_detalle = get_object_or_404(clientes, pk=clientes_id)
     cliente_detalle.delete()
-    #mytime = datetime.strptime('2359','%H%M').time()
-    #final_dia = datetime.combine(datetime.today(), mytime)
-    #las_citas = citas.objects.filter(fecha__gte = datetime.now(), fecha__lte = final_dia).order_by('fecha')
-    #context = {'las_citas': las_citas }
-    #return render(request, 'clinica/index.html', context)
-    return HttpResponseRedirect('/index')
+    return HttpResponseRedirect('/pacientes')
 
 #------------------------------ Buscar Pacientes  ---------------------------------------
 
 def buscar_paciente(request):
 	return render(request, 'clinica/paciente_buscar.html')
 
-#------------------------------Resultado busqueda paceintes  ----------------------------
+#------------------------------Resultado busqueda pacientes  ----------------------------
 def resultado_paciente(request):
 	if 'q' in request.GET and request.GET['q']:
 		q = request.GET['q']
@@ -103,3 +98,13 @@ def resultado_paciente(request):
 		return render(request, 'clinica/paciente_resultados.html', {'busqueda': busqueda, 'query':q})
 	else:
 		return render(request, 'clinica/paciente_buscar.html', {'error': True})
+
+#------------------------------ Borrado Historial  --------------------------------------
+
+def historialDelete(request, historial_id):
+    historial_detalle = get_object_or_404(historial, pk=historial_id)
+    historia = historial.objects.get(id = historial_id)
+    numero = str(historia.cliente.id)
+    historial_detalle.delete()
+    return HttpResponseRedirect('/historial/' + numero + '/')
+

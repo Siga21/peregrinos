@@ -16,8 +16,8 @@ Resultados de la Búsqueda
 		<div class ="panel-body">
 			{% if busqueda %}
 				{% for busqueda in busqueda %}
-						<a href="/pacientes_detalle/{{busqueda.id}}/" class="btn btn-primary btn-lg btn-block"><spam>{{ busqueda.apellidos | capfirst }} , {{ busqueda.nombre | capfirst }}</spam></a>
-						<br />
+						<a href="/pacientes_detalle/{{busqueda.id}}/" class="btn btn-primary btn-block"><spam>{{ busqueda.apellidos | capfirst }} , {{ busqueda.nombre | capfirst }}</spam></a>
+
 				{% endfor %}
 			{% else %}
 				<spam> No hay coincidencias </spam>
