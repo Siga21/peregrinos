@@ -21,7 +21,8 @@ urlpatterns = patterns('',
 	url(r'^pacientes_editar/(?P<pk>[0-9]+)/$', EditarPaciente.as_view(), name = 'pacientes_editar'),
 	url(r'^historial_editar/(?P<pk>[0-9]+)/$', EditarHistorial.as_view(), name = 'historial_editar'),
 	url(r'^historial_agregar/(?P<id>[0-9]+)/$', AgregarHistorial.as_view(), name = 'historial_agregar'),
-        url(r'^historial_borrar/(?P<historial_id>[0-9]+)/$', 'clinica.views.historialDelete', name = 'historial_borrado'),
+    url(r'^historial_borrar/(?P<historial_id>[0-9]+)/$', 'clinica.views.historialDelete', name = 'historial_borrado'),
+	url(r'^calendario/', 'clinica.views.calendario', name = 'calendario'),
 )
 
 if settings.DEBUG:

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+<!-- <link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/index.css'   %}"   />-->
+{% endblock %}
+{% block titulo %} Citas {% endblock %}
+{% block content %}
+<row>
+	<div class="col-md-2">
+		<div class="panel panel-default">
+ 		 	<div class="panel-heading">
+					Citas de Hoy
+			</div>
+      <div class="panel-body">
+      	{% if citas_1 %}
+       		{% for citas1 in citas_1 %}
+						<spam class="btn btn-primary btn-block">{{ citas1.fecha | date:"H:i" }}--{{ citas1.cliente }}</spam>
+          {% endfor %}
+  			{% else %}
+	  			<p class="text-warning">Sin citas</p>
+		  	{% endif %}
+       </div>
+     </div>
+  </div>
+	<div class="col-md-2">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Citas de Hoy + 1
+			</div>
+			<div class="panel-body">
+				{% if citas_2 %}
+				{% for citas2 in citas_2 %}
+				<spam class="btn btn-default btn-block">{{ citas2.fecha | date:"H:i" }}--{{ citas2.cliente }}</spam>
+				{% endfor %}
+				{% else %}
+				<p class="text-warning">Sin citas</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</row>
+{% endblock %}

@@ -108,3 +108,20 @@ def historialDelete(request, historial_id):
     historial_detalle.delete()
     return HttpResponseRedirect('/historial/' + numero + '/')
 
+#------------------------------- Principal ------------------------------------------------------
+
+def calendario(request):
+	hoy = datetime.today()
+	mitiempo = datetime.strptime('0000','%H%M').time()
+	mytime = datetime.strptime('2359','%H%M').time()
+	#----- dia de hoy  --------#
+	inicio_dia1 = datetime.combine(hoy, mitiempo)
+	final_dia1 = datetime.combine(hoy, mytime)
+	citas_1 = citas.objects.filter(fecha__gte = inicio_dia1, fecha__lte = final_dia1).order_by('fecha')
+	#----- dia 2       --------#
+	dia2 = hoy + timedelta(days = 1)
+	inicio_dia2 = datetime.combine(dia2, mitiempo)
+	final_dia2 = datetime.combine(dia2, mytime)
+	citas_2 = citas.objects.filter(fecha__gte = inicio_dia2, fecha__lte = final_dia2).order_by('fecha')
+	#----- renderizamos --------#
+	return render(request, 'clinica/calendario.html', {'citas_1': citas_1, 'citas_2': citas_2 })
