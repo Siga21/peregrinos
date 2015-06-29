@@ -15,7 +15,7 @@
       <div class="panel-body">
       	{% if citas_1 %}
        		{% for citas1 in citas_1 %}
-						<spam class="btn btn-primary btn-block">{{ citas1.fecha | date:"H:i" }}--{{ citas1.cliente }}</spam>
+						<spam class="btn btn-default btn-xs btn-block">{{ citas1.fecha | date:"H:i" }}--{{ citas1.cliente }}</spam>
           {% endfor %}
   			{% else %}
 	  			<p class="text-warning">Sin citas</p>
@@ -31,7 +31,71 @@
 			<div class="panel-body">
 				{% if citas_2 %}
 				{% for citas2 in citas_2 %}
-				<spam class="btn btn-default btn-block">{{ citas2.fecha | date:"H:i" }}--{{ citas2.cliente }}</spam>
+				<spam class="btn btn-default btn-xs btn-block">{{ citas2.fecha | date:"H:i" }}--{{ citas2.cliente }}</spam>
+				{% endfor %}
+				{% else %}
+				<p class="text-warning">Sin citas</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Citas de Hoy + 2
+			</div>
+			<div class="panel-body">
+				{% if citas_3 %}
+				{% for citas3 in citas_3 %}
+				<spam class="btn btn-default btn-xs btn-block">{{ citas3.fecha | date:"H:i" }}--{{ citas3.cliente }}</spam>
+				{% endfor %}
+				{% else %}
+				<p class="text-warning">Sin citas</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Citas de Hoy + 3
+			</div>
+			<div class="panel-body">
+				{% if citas_4 %}
+				{% for citas4 in citas_4 %}
+				<spam class="btn btn-default btn-xs btn-block">{{ citas4.fecha | date:"H:i" }}--{{ citas4.cliente }}</spam>
+				{% endfor %}
+				{% else %}
+				<p class="text-warning">Sin citas</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Citas de Hoy + 4
+			</div>
+			<div class="panel-body">
+				{% if citas_5 %}
+				{% for citas5 in citas_5 %}
+				<spam class="btn btn-default btn-xs btn-block">{{ citas5.fecha | date:"H:i" }}--{{ citas5.cliente }}</spam>
+				{% endfor %}
+				{% else %}
+				<p class="text-warning">Sin citas</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Citas de Hoy + 5
+			</div>
+			<div class="panel-body">
+				{% if citas_6 %}
+				{% for citas6 in citas_6 %}
+				<spam class="btn btn-default btn-xs btn-block">{{ citas6.fecha | date:"H:i" }}--{{ citas6.cliente }}</spam>
 				{% endfor %}
 				{% else %}
 				<p class="text-warning">Sin citas</p>
