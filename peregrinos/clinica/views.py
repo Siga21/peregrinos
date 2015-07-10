@@ -114,34 +114,41 @@ def calendario(request):
 	hoy = datetime.today()
 	mitiempo = datetime.strptime('0000','%H%M').time()
 	mytime = datetime.strptime('2359','%H%M').time()
-	#----- dia de hoy  --------#
-	inicio_dia1 = datetime.combine(hoy, mitiempo)
-	final_dia1 = datetime.combine(hoy, mytime)
-	citas_1 = citas.objects.filter(fecha__gte = inicio_dia1, fecha__lte = final_dia1).order_by('fecha')
-	#----- dia 2       --------#
-	dia2 = hoy + timedelta(days = 1)
-	inicio_dia2 = datetime.combine(dia2, mitiempo)
-	final_dia2 = datetime.combine(dia2, mytime)
-	citas_2 = citas.objects.filter(fecha__gte = inicio_dia2, fecha__lte = final_dia2).order_by('fecha')
-	#----- dia 3       --------#
-	dia3 = hoy + timedelta(days = 2)
-	inicio_dia3 = datetime.combine(dia3, mitiempo)
-	final_dia3 = datetime.combine(dia3, mytime)
-	citas_3 = citas.objects.filter(fecha__gte = inicio_dia3, fecha__lte = final_dia3).order_by('fecha')
-	#----- dia 4       --------#
-	dia4 = hoy + timedelta(days = 3)
-	inicio_dia4 = datetime.combine(dia4, mitiempo)
-	final_dia4 = datetime.combine(dia4, mytime)
-	citas_4 = citas.objects.filter(fecha__gte = inicio_dia4, fecha__lte = final_dia4).order_by('fecha')
-	#----- dia 5       --------#
-	dia5 = hoy + timedelta(days = 4)
-	inicio_dia5 = datetime.combine(dia5, mitiempo)
-	final_dia5 = datetime.combine(dia5, mytime)
-	citas_5 = citas.objects.filter(fecha__gte = inicio_dia5, fecha__lte = final_dia5).order_by('fecha')
-	#----- dia 6       --------#
-	dia6 = hoy + timedelta(days = 5)
-	inicio_dia6 = datetime.combine(dia6, mitiempo)
-	final_dia6 = datetime.combine(dia6, mytime)
-	citas_6 = citas.objects.filter(fecha__gte = inicio_dia6, fecha__lte = final_dia6).order_by('fecha')
+#	#----- dia de hoy  --------#
+#	inicio_dia1 = datetime.combine(hoy, mitiempo)
+#	final_dia1 = datetime.combine(hoy, mytime)
+#	citas_1 = citas.objects.filter(fecha__gte = inicio_dia1, fecha__lte = final_dia1).order_by('fecha')
+	citas_1 = citas.objects.all().order_by('fecha')
+#	#----- dia 2       --------#
+#	dia2 = hoy + timedelta(days = 1)
+#	inicio_dia2 = datetime.combine(dia2, mitiempo)
+#	final_dia2 = datetime.combine(dia2, mytime)
+#	citas_2 = citas.objects.filter(fecha__gte = inicio_dia2, fecha__lte = final_dia2).order_by('fecha')
+#	#----- dia 3       --------#
+#	dia3 = hoy + timedelta(days = 2)
+#	inicio_dia3 = datetime.combine(dia3, mitiempo)
+#	final_dia3 = datetime.combine(dia3, mytime)
+#	citas_3 = citas.objects.filter(fecha__gte = inicio_dia3, fecha__lte = final_dia3).order_by('fecha')
+#	#----- dia 4       --------#
+#	dia4 = hoy + timedelta(days = 3)
+#	inicio_dia4 = datetime.combine(dia4, mitiempo)
+#	final_dia4 = datetime.combine(dia4, mytime)
+#	citas_4 = citas.objects.filter(fecha__gte = inicio_dia4, fecha__lte = final_dia4).order_by('fecha')
+#	#----- dia 5       --------#
+#	dia5 = hoy + timedelta(days = 4)
+#	inicio_dia5 = datetime.combine(dia5, mitiempo)
+#	final_dia5 = datetime.combine(dia5, mytime)
+#	citas_5 = citas.objects.filter(fecha__gte = inicio_dia5, fecha__lte = final_dia5).order_by('fecha')
+#	#----- dia 6       --------#
+#	dia6 = hoy + timedelta(days = 5)
+#	inicio_dia6 = datetime.combine(dia6, mitiempo)
+#	final_dia6 = datetime.combine(dia6, mytime)
+#	citas_6 = citas.objects.filter(fecha__gte = inicio_dia6, fecha__lte = final_dia6).order_by('fecha')
 	#----- renderizamos --------#
-	return render(request, 'clinica/calendario.html', {'citas_1': citas_1, 'citas_2': citas_2 , 'citas_3': citas_3, 'citas_4': citas_4, 'citas_5': citas_5, 'citas_6': citas_6 })
+#	return render(request, 'clinica/calendario.html', {'citas_1': citas_1, 'citas_2': citas_2 , 'citas_3': citas_3, 'citas_4': citas_4, 'citas_5': citas_5, 'citas_6': citas_6 })
+	return render(request, 'clinica/selectable.html', {'citas_1': citas_1})
+
+
+
+
+

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+{%   load   staticfiles   %}
+<meta charset='utf-8' />
+
+<link   rel="stylesheet"   type="text/css"   href="{%   static  'css/fullcalendar.css'   %}"   />
+<link   rel="stylesheet"   type="text/css"   href="{%   static  'css/fullcalendar.print.css'   %}" media="print" />
+<script src="{% static 'js/moment.min.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/fullcalendar.min.js' %}"></script>
+<script src="{% static 'js/lang-all.js' %}" ></script>
+
+<script>
+
+	$(document).ready(function() {
+		
+		$('#calendar').fullCalendar({
+                        lang: 'es', 
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			defaultDate: '2015-07-10',
+			firstDay: '1',
+			weekNumbers: true,
+                        /*defaultView: 'agendaDay',*/
+			selectable: true,
+			selectHelper: true,
+			select: function(date, start, end) {
+                                fecha = date.format();
+				window.location.assign("/citas_nueva/" + fecha);
+			    },
+/*			select: function(start, end) {
+				var title = prompt('Event Title:');
+				var eventData;
+				if (title) {
+					eventData = {
+						title: title,
+						start: start,
+						end: end
+					};
+					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+				}
+				$('#calendar').fullCalendar('unselect');
+			},*/
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			eventClick: function(calEvent, jsEvent, view) {
+                                cliente = calEvent.title;
+                                cuantos = cliente.search("#");
+                                elid = cliente.substring(0,cuantos);
+				window.location.assign("/citas_modificar/" + elid);
+			    },
+			events: [
+					{% for citas1 in citas_1 %}
+					{
+					title: '{{citas1.id}}' + '#' + '{{citas1.cliente}}',
+					start: '{{citas1.fecha | date:"c"}}'
+					},
+
+			         	 {% endfor %}
+
+/*				{
+					title: 'Click for Google',
+					url: 'http://google.com/',
+					start: '2015-07-10'
+				}	*/
+				
+				]
+
+		});
+		
+	});
+
+</script>
+<style>
+
+	body {
+		margin: 40px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
+
+	#calendar {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+</style>
+</head>
+<body>
+
+	<div id='calendar'></div>
+</body>
+</html>
