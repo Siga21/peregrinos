@@ -18,6 +18,7 @@ Lista de pacientes
 			<div class="panel-heading">Pacientes</div>
 			<div class ="panel-body">
 				{% if object_list %}
+				<div class="table-responsive">
 				<table class="table table-striped">
 					<th>fotografia</th>
 					<th>nombre</th>
@@ -37,6 +38,7 @@ Lista de pacientes
 							<td><a href="/historial/{{pacientes.id}}/" class="btn btn-primary">Historial<a></td>
 					{% endfor %}
 				  </table>
+				</div>
 		    {% else %}
         	<p class="text-warning">No hay clientes registrados.</p>
         {% endif %}

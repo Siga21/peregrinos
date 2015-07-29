@@ -18,6 +18,7 @@
  		 	<div class="panel-heading">Citas de Hoy</div>
          <div class="panel-body">
          	{% if las_citas %}
+					  <div class="table-responsive">
          		<table class="table table-striped">
                   <th>#</th>
                   <th>hora</th>
@@ -37,7 +38,8 @@
                     		<td><a href="#" class="btn btn-primary">Citas</a>
                      </tr>
                   {% endfor %}
-                  </table>
+            </table>
+					</div>
 				{% else %}
 					<p class="text-warning">Sin citas</p>
 				{% endif %}
