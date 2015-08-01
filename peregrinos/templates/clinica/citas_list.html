@@ -7,8 +7,13 @@ Citas del Paciente
 		{% if object_list %}
 			<div class="list-group">
 				{% for citas  in object_list %}
-					<spam class="list-group-item active"><strong>{{ citas.fecha | date:"D j  F  Y H:i" }}</strong></spam>
+					{% if citas.sala.id  = 1 %}
+						<spam class="list-group-item active"><strong>{{ citas.fecha | date:"D j  F  Y H:i" }}</strong></spam>
+					{% else %}
+						<spam class="list-group-item list-group-item-danger"><strong>{{ citas.fecha | date:"D j  F  Y H:i" }}</strong></spam>
+					{% endif %}
 					<spam class="list-group-item"><smal>{{ citas.observaciones }}</smal></spam>
+					<spam class="list-group-item"><smal>{{ citas.sala.id  }}</smal></spam>
 			        {% endfor %}
 			</div>
 	        {% else %}

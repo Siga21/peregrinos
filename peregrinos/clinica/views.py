@@ -7,7 +7,7 @@ from django.utils import timezone
 #from clinica.forms import clienteForm
 from django.views.generic import ListView, DetailView
 
-from clinica.models import clientes, historial, citas
+from clinica.models import clientes, historial, citas, salas 
 
 # Create your views here.
 #------------------------------- Principal ------------------------------------------------------
@@ -147,8 +147,3 @@ def calendario(request):
 	#----- renderizamos --------#
 #	return render(request, 'clinica/calendario.html', {'citas_1': citas_1, 'citas_2': citas_2 , 'citas_3': citas_3, 'citas_4': citas_4, 'citas_5': citas_5, 'citas_6': citas_6 })
 	return render(request, 'clinica/selectable.html', {'citas_1': citas_1})
-
-
-
-
-

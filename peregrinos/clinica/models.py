@@ -28,8 +28,15 @@ class historial(models.Model):
     def get_absolute_url(self):
         return reverse('listahistorial', args=[str(self.cliente.id)])
 
+class salas(models.Model):
+    sala = models.CharField(max_length=25)
+    color = models.CharField(max_length=7)
+
+    def __unicode__(self):
+        return self.sala
 
 class citas(models.Model):
     fecha = models.DateTimeField(default=datetime.now, blank=True)
     cliente = models.ForeignKey(clientes, default=None, null=True, blank=True)
     observaciones = models.TextField()
+    sala = models.ForeignKey(salas, default=None, null=True, blank=True)
