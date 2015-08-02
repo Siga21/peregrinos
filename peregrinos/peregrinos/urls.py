@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
-from clinica.views import ListaPacientes, DetallePacientes, ListaHistorial, ListaCitas
+from clinica.views import ListaPacientes, DetallePacientes, ListaHistorial, ListaCitas, ListaSalas
 from clinica.forms import CrearPaciente, EditarPaciente, EditarHistorial, AgregarHistorial
 
 urlpatterns = patterns('',
@@ -23,6 +23,7 @@ urlpatterns = patterns('',
 	url(r'^historial_agregar/(?P<id>[0-9]+)/$', AgregarHistorial.as_view(), name = 'historial_agregar'),
     url(r'^historial_borrar/(?P<historial_id>[0-9]+)/$', 'clinica.views.historialDelete', name = 'historial_borrado'),
 	url(r'^calendario/', 'clinica.views.calendario', name = 'calendario'),
+	url(r'^salas/',ListaSalas.as_view(), name = 'ListaSalas'),
 )
 
 if settings.DEBUG:

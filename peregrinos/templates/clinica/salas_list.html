@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+<!--<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes.css'   %}"   />-->
+{% endblock %}
+{% block titulo %}
+Lista de salas
+{% endblock %}
+{% block content %}
+<row>
+	<div class="col-md-3">
+		<a href="/salas/agregar" class="btn btn-primary btn-lg btn-block">Nueva</a>
+		<a href="/salas/modificar" class="btn btn-primary btn-lg btn-block">Modificar</a>
+	</div>
+	<div class="col-md-9" >
+		<div class="panel panel-default">
+			<div class="panel-heading">Salas</div>
+			<div class ="panel-body">
+				{% if object_list %}
+				<div class="table-responsive">
+				<table class="table table-striped">
+					<th>sala</th>
+					<th>color</th>
+          {% for salas  in object_list %}
+						<tr>
+							<td>{{salas.sala}}</td>
+							<td style="background-color:{{salas.color}};"> </td>
+					{% endfor %}
+				  </table>
+				</div>
+		    {% else %}
+        	<p class="text-warning">No hay salas registradas.</p>
+        {% endif %}
+			</div>
+		</div>
+	</div>
+</row>
+<row>
+	<div class="col-md-9 col-md-offset-3">
+		<nav>
+			<ul class="pager">
+				{% if page_obj.has_previous %}
+				<li class="previus"><a href="?page={{ page_obj.previous_page_number }}"><spam aria-hideen="true">&larr;</spam>Anterior</a></li>
+				{%endif%}
+				<li> Pagina {{ page_obj.number }} de {{ paginator.num_pages }}.</li>
+				{% if page_obj.has_next %}
+				<li class="next"><a href="?page={{ page_obj.next_page_number }}">Siguiente<spam aria-hideen="true">&rarr;</spam></a></li>
+				{%endif%}
+			</ul>
+		</nav>
+	</div>
+</row>
+
+{% endblock %}
