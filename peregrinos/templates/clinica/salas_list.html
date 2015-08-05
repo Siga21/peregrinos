@@ -11,9 +11,8 @@ Lista de salas
 <row>
 	<div class="col-md-3">
 		<a href="/salas/agregar" class="btn btn-primary btn-lg btn-block">Nueva</a>
-		<a href="/salas/modificar" class="btn btn-primary btn-lg btn-block">Modificar</a>
 	</div>
-	<div class="col-md-9" >
+	<div class="col-md-6" >
 		<div class="panel panel-default">
 			<div class="panel-heading">Salas</div>
 			<div class ="panel-body">
@@ -22,10 +21,12 @@ Lista de salas
 				<table class="table table-striped">
 					<th>sala</th>
 					<th>color</th>
+					<th>Observaciones</th>
           {% for salas  in object_list %}
 						<tr>
-							<td>{{salas.sala}}</td>
-							<td style="background-color:{{salas.color}};"> </td>
+							<td><a href="/salas_detalle/{{salas.id}}/"><spam class="text text-primary">{{ salas.sala | capfirst }}</spam></a></td>
+							<td style="color:{{salas.color}};">██████████</td>
+							<td>{{ salas.observaciones}}</td>
 					{% endfor %}
 				  </table>
 				</div>

@@ -31,6 +31,7 @@ class historial(models.Model):
 class salas(models.Model):
     sala = models.CharField(max_length=25)
     color = models.CharField(max_length=7)
+    observaciones = models.TextField(default=None, null=True)
 
     def __unicode__(self):
         return self.sala

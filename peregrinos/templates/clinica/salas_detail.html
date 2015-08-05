@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/pacientes_detalle.css'   %}"   />
+{% endblock %}
+{% block titulo %}
+Detalle de la sala
+{% endblock %}
+{% block content %}
+<row>
+	<div class="col-md-3">
+		<a href="/salas/agregar" class="btn btn-primary btn-lg btn-block">Nueva</a>
+		<a href="/salas/modificar" class="btn btn-warning btn-lg btn-block">Modificar</a>
+		<a href="/salas/borrar" class="btn btn-danger btn-lg btn-block">Borrar</a>
+	</div>
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+					Datos de la sala
+			</div>
+				<div class="panel-body">
+					  <div class="table-responsive">
+						<table class="table table-striped">
+						<th>Sala</th>
+						<th>Color</th>
+						<th>Observaciones</th>
+						<tr>
+							<td>{{ salas.sala | capfirst}}</td>
+							<td style="color:{{ salas.color}};">██████████</td>
+							<td>{{ salas.observaciones}}</td>
+						</tr>
+					  </table>
+					  </div>
+			  </div>
+		</div>
+	</div>
+</row>
+{% endblock %}

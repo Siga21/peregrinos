@@ -154,3 +154,7 @@ class ListaSalas(ListView):
     queryset = salas.objects.order_by('sala')
     context_object_name = 'salas'
     paginate_by = 8
+
+#----------------------------------- Detalle Pacientes ---------------------------------
+class DetalleSalas(DetailView):
+    model = salas
