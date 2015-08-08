@@ -5,7 +5,7 @@ from django import forms
 from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render_to_response, get_object_or_404
 
-from clinica.models import clientes, historial
+from clinica.models import clientes, historial, salas
 
 #class clienteForm(ModelForm):
 #	class Meta:
@@ -31,3 +31,7 @@ class AgregarHistorial(CreateView):
     def form_valid(self, form):
         form.instance.cliente = get_object_or_404(clientes, pk=self.kwargs['id'])
         return super(AgregarHistorial, self).form_valid(form)
+
+class CrearSala(CreateView):
+    model = salas
+    fields = ['sala', 'color', 'observaciones',]

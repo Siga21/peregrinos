@@ -36,6 +36,9 @@ class salas(models.Model):
     def __unicode__(self):
         return self.sala
 
+    def get_absolute_url(self):
+        return reverse('salas_detalle', kwargs={'pk': self.pk})
+
 class citas(models.Model):
     fecha = models.DateTimeField(default=datetime.now, blank=True)
     cliente = models.ForeignKey(clientes, default=None, null=True, blank=True)

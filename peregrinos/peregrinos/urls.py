@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from clinica.views import ListaPacientes, DetallePacientes, ListaHistorial, ListaCitas, ListaSalas, DetalleSalas
-from clinica.forms import CrearPaciente, EditarPaciente, EditarHistorial, AgregarHistorial
+from clinica.forms import CrearPaciente, EditarPaciente, EditarHistorial, AgregarHistorial, CrearSala
 
 urlpatterns = patterns('',
 	url(r'^imagenes/(?P<path>.*)$', 'django.views.static.serve', {
@@ -25,6 +25,7 @@ urlpatterns = patterns('',
 	url(r'^calendario/', 'clinica.views.calendario', name = 'calendario'),
 	url(r'^salas/',ListaSalas.as_view(), name = 'ListaSalas'),
 	url(r'^salas_detalle/(?P<pk>[0-9]+)/$', DetalleSalas.as_view(), name = 'salas_detalle'),
+	url(r'^sala/agregar/$', CrearSala.as_view(), name='agregarsala'),
 )
 
 if settings.DEBUG:
