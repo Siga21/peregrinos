@@ -117,13 +117,20 @@ def calendario(request):
 	citas_1 = citas.objects.all().order_by('fecha')
 	return render(request, 'clinica/selectable.html', {'citas_1': citas_1})
 
-#------------------------- Listado Pacientes -----------------------------------------------------
+#------------------------- Listado Salas -----------------------------------------------------
 
 class ListaSalas(ListView):
     queryset = salas.objects.order_by('id')
     context_object_name = 'salas'
     paginate_by = 8
 
-#----------------------------------- Detalle Pacientes ---------------------------------
+#----------------------------------- Detalle Salas ---------------------------------
 class DetalleSalas(DetailView):
     model = salas
+
+#------------------------------ Borrado Salas  --------------------------------------
+
+def salasDelete(request, salas_id):
+    sala_detalle = get_object_or_404(salas, pk=salas_id)
+    sala_detalle.delete()
+    return HttpResponseRedirect('/salas')

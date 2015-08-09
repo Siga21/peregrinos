@@ -35,3 +35,7 @@ class AgregarHistorial(CreateView):
 class CrearSala(CreateView):
     model = salas
     fields = ['sala', 'color', 'observaciones',]
+
+class EditarSala(UpdateView):
+    model = salas
+    fields = ['sala', 'color', 'observaciones',]    
