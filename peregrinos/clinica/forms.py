@@ -5,7 +5,7 @@ from django import forms
 from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render_to_response, get_object_or_404
 
-from clinica.models import clientes, historial, salas
+from clinica.models import clientes, historial, salas, citas
 
 #class clienteForm(ModelForm):
 #	class Meta:
@@ -38,4 +38,8 @@ class CrearSala(CreateView):
 
 class EditarSala(UpdateView):
     model = salas
-    fields = ['sala', 'color', 'observaciones',]    
+    fields = ['sala', 'color', 'observaciones',]
+
+class EditarCita(UpdateView):
+    model = citas
+    fields = ['fecha', 'cliente', 'observaciones', 'sala',]

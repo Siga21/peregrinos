@@ -44,3 +44,9 @@ class citas(models.Model):
     cliente = models.ForeignKey(clientes, default=None, null=True, blank=True)
     observaciones = models.TextField()
     sala = models.ForeignKey(salas, default=None, null=True, blank=True)
+
+    def __unicode__(self):
+        return self.fecha
+
+    def get_absolute_url(self):
+        return reverse('calendario')

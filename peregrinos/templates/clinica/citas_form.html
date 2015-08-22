@@ -1,0 +1,51 @@
+<html>
+{% extends "base.html" %}
+{%   load   staticfiles   %}
+
+{% block elcss %}
+<!--<link   rel="stylesheet"   type="text/css"   href="{%   static  'clinica/css/clientes_form.css'   %}"   />-->
+{% endblock %}
+
+<body>
+{% block titulo %}
+Agregar/Modificar Citas
+{% endblock %}
+{% block content %}
+<row>
+  <div class="col-md-6 col-md-offset-3">
+    {% if form.errors %}
+      <p style="color: red;">
+        Por favor corrige lo siguiente:
+      </p>
+    {% endif %}
+    <br /><br />
+    <form action="" role="form" method="post">{% csrf_token %}
+      <div class="form-group">
+        {{ form.fecha.errors }}
+        <label for="id_fecha" class="text-primary" >Fecha</label>
+        <input type="datetime" class="form-control" placeholder="Introduce la fecha" id={{ form.fecha }}
+      </div>
+      <div class="form-group">
+        {{ form.cliente.errors }}
+        <label for="id_cliente" class="text-primary">Cliente</label>
+        {{ form.cliente }}
+      </div>
+      <div class="form-group">
+        {{ form.observaciones.errors }}
+        <label for="id_observaciones" class="text-primary">Observaciones</label>
+        <textarea class="form-control" placeholder="Observaciones" id={{ form.observaciones }}
+      </div>
+      <div class="form-group">
+        {{ form.sala.errors }}
+        <label for="id_sala" class="text-primary">Sala</label>
+        {{ form.sala }}
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+    <br /<br />
+  </div>
+</row>
+{% endblock %}
+</body>
+
+</html>

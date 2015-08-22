@@ -2,8 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from clinica.views import ListaPacientes, DetallePacientes, ListaHistorial, ListaCitas, ListaSalas, DetalleSalas
-from clinica.forms import CrearPaciente, EditarPaciente, EditarHistorial, AgregarHistorial, CrearSala, EditarSala
-
+from clinica.forms import CrearPaciente, EditarPaciente, EditarHistorial, AgregarHistorial
+from clinica.forms import CrearSala, EditarSala, EditarCita
 urlpatterns = patterns('',
 	url(r'^imagenes/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,
@@ -28,6 +28,7 @@ urlpatterns = patterns('',
 	url(r'^sala/agregar/$', CrearSala.as_view(), name='agregarsala'),
 	url(r'^sala/editar/(?P<pk>[0-9]+)/$', EditarSala.as_view(), name = 'sala_editar'),
 	url(r'^sala/borrar/(?P<salas_id>[0-9]+)/$', 'clinica.views.salasDelete', name = 'salas_borrado'),
+	url(r'^citas_modificar/(?P<pk>[0-9]+)/$', EditarCita.as_view(), name = 'citas_editar'),
 )
 
 if settings.DEBUG:
