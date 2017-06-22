@@ -43,3 +43,7 @@ class EditarSala(UpdateView):
 class EditarCita(UpdateView):
     model = citas
     fields = ['fecha', 'cliente', 'observaciones', 'sala',]
+
+class CrearCita(CreateView):
+    model = citas
+    fields = ['fecha', 'cliente', 'observaciones', 'sala']

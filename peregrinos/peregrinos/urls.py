@@ -6,7 +6,7 @@ from django.conf import settings
 from clinica import views
 from clinica.views import index, ListaPacientes, DetallePacientes, ListaHistorial, ListaCitas, ListaSalas, DetalleSalas
 from clinica.forms import CrearPaciente, EditarPaciente, EditarHistorial, AgregarHistorial
-from clinica.forms import CrearSala, EditarSala, EditarCita
+from clinica.forms import CrearSala, EditarSala, EditarCita, CrearCita
 urlpatterns = [
 	url(r'^admin/', include(admin.site.urls)),
 	url(r'^index/', views.index , name = 'index'),
@@ -29,6 +29,7 @@ urlpatterns = [
 	url(r'^sala/editar/(?P<pk>[0-9]+)/$', EditarSala.as_view(), name = 'sala_editar'),
 	url(r'^sala/borrar/(?P<salas_id>[0-9]+)/$', views.salasDelete, name = 'salas_borrado'),
 	url(r'^citas_modificar/(?P<pk>[0-9]+)/$', EditarCita.as_view(), name = 'citas_editar'),
+	url(r'^citas/agregar/(?P<id>[0-9]+)/$', CrearCita.as_view(), name='agregarcita'),
 ]
 
 if settings.DEBUG:
